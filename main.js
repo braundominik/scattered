@@ -1,7 +1,5 @@
 var volumeTest;
 (function (volumeTest) {
-    //window.addEventListener("load", init);
-    //function init() {
     var audioContext = null;
     let meter = null;
     var canvasContext = null;
