@@ -4,6 +4,7 @@ window.addEventListener("load", init);
 
 let crc: CanvasRenderingContext2D;
 let canvas: HTMLCanvasElement;
+let someValue: HTMLElement = document.getElementById("wert");
 
 let progress: number = 0.5;
 
@@ -31,6 +32,7 @@ export function draw(volume): void {
     }
     crc.arc(200, 200, 100, progress * Math.PI, 2.5 * Math.PI);
     crc.stroke();
+    someValue.innerText = volume;
     console.log(volume);
 }
 
