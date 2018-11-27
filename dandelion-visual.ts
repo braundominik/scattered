@@ -4,13 +4,14 @@ window.addEventListener("load", init);
 
 let crc: CanvasRenderingContext2D;
 let canvas: HTMLCanvasElement;
-let someValue: HTMLElement = document.getElementById("wert");
+let someValue: HTMLElement
 
 let progress: number = 0.5;
 
 function init(): void {
     canvas = <HTMLCanvasElement>document.getElementById("flower");
     crc = canvas.getContext("2d");
+    someValue = document.getElementById("wert");
     //animate();
 
 }

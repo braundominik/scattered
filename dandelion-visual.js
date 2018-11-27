@@ -3,10 +3,12 @@ var volumeTest;
     window.addEventListener("load", init);
     let crc;
     let canvas;
+    let someValue;
     let progress = 0.5;
     function init() {
         canvas = document.getElementById("flower");
         crc = canvas.getContext("2d");
+        someValue = document.getElementById("wert");
         //animate();
     }
     /* function animate(): void {
@@ -24,6 +26,7 @@ var volumeTest;
         }
         crc.arc(200, 200, 100, progress * Math.PI, 2.5 * Math.PI);
         crc.stroke();
+        someValue.innerText = volume;
         console.log(volume);
     }
     volumeTest.draw = draw;
