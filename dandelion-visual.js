@@ -21,7 +21,7 @@ var volumeTest;
         crc.strokeStyle = "black";
         crc.lineWidth = 20;
         crc.beginPath();
-        if (volume > 0.001) {
+        if (volume > 0.01) {
             progress = progress + 0.005;
         }
         crc.arc(200, 200, 100, progress * Math.PI, 2.5 * Math.PI);
