@@ -1,0 +1,49 @@
+
+
+html{
+    height:100%;
+    background-color: #2C5E9D;
+}
+
+#textAnim{
+    position: relative;
+}
+
+#textAnim svg {
+    position: absolute;
+}
+
+#textAnim svg:last-child{
+    position: relative;
+}
+
+#globeAnim{
+    position: relative;
+}
+
+#globeAnim svg {
+    position: absolute;
+}
+
+#globeAnim svg:last-child{
+    position: relative;
+}
+
+body{
+    margin:0;
+    padding: 0;
+}
+#anim{
+    height:99%;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#button{
+    width: 100%;
+    position:absolute;
+    bottom:0;
+    height:14%;
+    z-index: 1;
+}
