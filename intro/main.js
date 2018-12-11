@@ -56,7 +56,7 @@ function init() {
         let $svg = document.getElementsByTagName('svg');
         Array.from($svg).forEach(element => {
             console.log(element);
-            element.setAttribute('preserveAspectRatio', 'xMidYMax meet');
+            element.setAttribute('preserveAspectRatio', 'xMidYMid meet');
         })
     });
 }
