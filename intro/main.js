@@ -27,6 +27,8 @@ function init() {
         path: './animations/outroGlobe.json' // the path to the animation json
     })
 
+    outroGlobeAnimation.hide();
+
     globeAnimation.setSpeed(0.2);
 
     textAnimation = bodymovin.loadAnimation({
@@ -59,9 +61,10 @@ function init() {
         console.log('loaded');
         setupSVGs();
     });
+
+    document.addEventListener("click", changeText);
 }
 
-setTimeout(changeText, 3000);
 function changeText() {
     textAnimation.hide();
     actionAnimation.show();
@@ -72,6 +75,7 @@ function changeText() {
 function plantTransition() {
     document.getElementById("textAnim").removeEventListener("click", plantTransition);
     globeAnimation.hide();
+    outroGlobeAnimation.play();
     outroGlobeAnimation.play();
     outroGlobeAnimation.addEventListener("complete", handleComplete);
     console.log("test");    
