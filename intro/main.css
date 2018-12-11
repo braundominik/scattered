@@ -4,6 +4,11 @@
     padding: 0;
     overflow: hidden;
 }
+
+#wert{
+    position: absolute;
+}
+
 html{
     height:100%;
     background-color: #2C5E9D;

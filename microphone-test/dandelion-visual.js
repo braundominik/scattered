@@ -6,8 +6,8 @@ var volumeTest;
     let someValue;
     let progress = 0.5;
     function init() {
-        canvas = document.getElementById("flower");
-        crc = canvas.getContext("2d");
+        /* canvas = <HTMLCanvasElement>document.getElementById("flower");
+        crc = canvas.getContext("2d"); */
         someValue = document.getElementById("wert");
         //animate();
     }
@@ -16,16 +16,16 @@ var volumeTest;
         setTimeout(animate, 100);
     } */
     function draw(volume) {
-        crc.fillStyle = "white";
+        /* crc.fillStyle = "white";
         crc.fillRect(0, 0, canvas.width, canvas.height);
         crc.strokeStyle = "black";
         crc.lineWidth = 20;
         crc.beginPath();
-        if (volume > 0.01) {
+        if(volume>0.01){
             progress = progress + 0.005;
         }
         crc.arc(200, 200, 100, progress * Math.PI, 2.5 * Math.PI);
-        crc.stroke();
+        crc.stroke(); */
         someValue.innerText = volume;
         console.log(volume);
     }

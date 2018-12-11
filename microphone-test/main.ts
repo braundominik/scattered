@@ -10,7 +10,7 @@ namespace volumeTest {
         window.onload = function () {
 
             // grab our canvas
-            canvasContext = document.getElementById("meter").getContext("2d");
+            //canvasContext = document.getElementById("meter").getContext("2d");
 
             // monkeypatch Web Audio
             window.AudioContext = window.AudioContext || window.webkitAudioContext;
