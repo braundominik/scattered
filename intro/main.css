@@ -3,6 +3,7 @@
 html{
     height:100%;
     background-color: #2C5E9D;
+    overflow: hidden;
 }
 
 #textAnim{
