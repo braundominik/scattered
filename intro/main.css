@@ -1,5 +1,9 @@
 
-
+*{
+    margin:0;
+    padding: 0;
+    overflow: hidden;
+}
 html{
     height:100%;
     background-color: #2C5E9D;
@@ -33,6 +37,7 @@ html{
 body{
     margin:0;
     padding: 0;
+    height:100vh;
 }
 #anim{
     height:99%;

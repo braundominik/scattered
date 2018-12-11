@@ -2,9 +2,13 @@ window.addEventListener("load", init);
 let buttonClicked = false;
 let globeAnimation;
 let textAnimation;
+let availHeight; //stores the avaiable height on screen;
 function init() {
     //document.addEventListener("click", stopAnimation);
     //document.getElementById("button").addEventListener("click", animate);
+
+    availHeight = document.getElementsByTagName("html")[0].offsetHeight;
+
     globeAnimation = bodymovin.loadAnimation({
         container: document.getElementById("globeAnim"), // the dom element that will contain the animation
         renderer: 'svg',
@@ -32,7 +36,7 @@ function init() {
         autoplay: true,
         path: './animations/text.json' // the path to the animation json
     })
-    
+
 
     actionAnimation = bodymovin.loadAnimation({
         container: document.getElementById("textAnim"), // the dom element that will contain the animation
@@ -53,11 +57,7 @@ function init() {
 
     globeAnimation.addEventListener('DOMLoaded', function () {
         console.log('loaded');
-        let $svg = document.getElementsByTagName('svg');
-        Array.from($svg).forEach(element => {
-            console.log(element);
-            element.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-        })
+        setupSVGs();
     });
 }
 
@@ -69,20 +69,40 @@ function changeText() {
     document.getElementById("textAnim").addEventListener("click", plantTransition);
 }
 
-function plantTransition(){
+function plantTransition() {
+    document.getElementById("textAnim").removeEventListener("click", plantTransition);
     globeAnimation.hide();
     outroGlobeAnimation.play();
-    outroGlobeAnimation.addEventListener("complete", function(){
-        globeAnimation.destroy();
-        textAnimation.destroy();
-        console.log("complete");
-        plantActionAnimation = bodymovin.loadAnimation({
-            container: document.getElementById("textAnim"), // the dom element that will contain the animation
-            renderer: 'svg',
-            loop: false,
-            autoplay: true,
-            path: './animations/plantAction.json' // the path to the animation json
-        })
+    outroGlobeAnimation.addEventListener("complete", handleComplete);
+    console.log("test");    
+}
+
+function handleComplete() {
+    outroGlobeAnimation.removeEventListener("complete", handleComplete);
+    globeAnimation.destroy();
+    textAnimation.destroy();
+    console.log("complete");
+    document.getElementById("textAnim").style.height = "100%";
+    plantActionAnimation = bodymovin.loadAnimation({
+        container: document.getElementById("textAnim"), // the dom element that will contain the animation
+        renderer: 'svg',
+        loop: false,
+        autoplay: true,
+        path: './animations/plantAction.json' // the path to the animation json
+    });
+    plantActionAnimation.addEventListener("data_ready", function(){
+        setupSVGs();
+    })
+    
+}
+
+function setupSVGs() {
+    console.log("setupSVGs");
+    let $svg = document.getElementsByTagName('svg');
+    Array.from($svg).forEach(element => {
+        console.log(element);
+        element.setAttribute('preserveAspectRatio', 'xMidYMax slice');
+        //element.style.height = availHeight + "px";
     })
 }
 
