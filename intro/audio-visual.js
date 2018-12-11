@@ -8,5 +8,5 @@ function init() {
 
 function draw(volume) {
     someValue.innerText = volume;
-    console.log(volume);
+    //console.log(volume);
 }

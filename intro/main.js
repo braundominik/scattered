@@ -36,7 +36,7 @@ function init() {
         renderer: 'svg',
         loop: true,
         autoplay: true,
-        path: './animations/text.json' // the path to the animation json
+        path: './animations/scattered_logo.json' // the path to the animation json
     })
 
 
@@ -66,6 +66,7 @@ function init() {
 }
 
 function changeText() {
+    document.removeEventListener("click", changeText);
     textAnimation.hide();
     actionAnimation.show();
     actionAnimation.play();
