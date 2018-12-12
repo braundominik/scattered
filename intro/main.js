@@ -60,6 +60,8 @@ function init() {
     globeAnimation.addEventListener('DOMLoaded', function () {
         console.log('loaded');
         setupSVGs();
+        document.getElementById("globeAnim").querySelector("svg").style.position = "absolute";
+        document.getElementById("globeAnim").querySelector("svg").style.top = "80px";
     });
 
     document.addEventListener("click", changeText);
