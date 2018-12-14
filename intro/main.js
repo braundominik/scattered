@@ -36,7 +36,7 @@ function init() {
         renderer: 'svg',
         loop: true,
         autoplay: true,
-        path: './animations/scattered_logo.json' // the path to the animation json
+        path: './animations/start_animation_1306.json' // the path to the animation json
     })
 
 
