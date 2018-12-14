@@ -106,12 +106,12 @@ function init() {
         mesh.rotation.x += 0.1
     }) */
 
-    var stats = new Stats();
-    document.body.appendChild(stats.dom);
+    //var stats = new Stats();
+    //document.body.appendChild(stats.dom);
     // render the scene
     onRenderFcts.push(function () {
         renderer.render(scene, camera);
-        stats.update();
+        //stats.update();
     })
     // run the rendering loop
     var lastTimeMsec = null
