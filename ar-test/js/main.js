@@ -39,10 +39,10 @@ function init() {
         onResize()
     })
     function onResize() {
-        arToolkitSource.onResize()
-        arToolkitSource.copySizeTo(renderer.domElement)
+        arToolkitSource.onResizeElement()
+        arToolkitSource.copyElementSizeTo(renderer.domElement)
         if (arToolkitContext.arController !== null) {
-            arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)
+            arToolkitSource.copyElementSizeTo(arToolkitContext.arController.canvas)
         }
     }
 
@@ -87,7 +87,7 @@ function init() {
     var arWorldRoot = smoothedRoot
     // add a torus knot	
 
-    /* var geometry = new THREE.CubeGeometry(1, 1, 1);
+    var geometry = new THREE.CubeGeometry(1, 1, 1);
     var material = new THREE.MeshNormalMaterial({
         transparent: true,
         opacity: 0.5,
@@ -95,34 +95,8 @@ function init() {
     });
     var mesh = new THREE.Mesh(geometry, material);
     mesh.position.y = geometry.parameters.height / 2
-    arWorldRoot.add(mesh); */
+    arWorldRoot.add(mesh);
 
-    // instantiate a loader
-    var loader = new THREE.OBJLoader();
-
-    // load a resource
-    loader.load(
-        // resource URL
-        './old/data/model.obj',
-        // called when resource is loaded
-        function (object) {
-
-            arWorldRoot.add(object);
-
-        },
-        // called when loading is in progresses
-        function (xhr) {
-
-            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-
-        },
-        // called when loading has errors
-        function (error) {
-
-            console.log('An error happened');
-
-        }
-    );
 
     /* var geometry = new THREE.TorusKnotGeometry(0.3, 0.1, 64, 16);
     var material = new THREE.MeshNormalMaterial();
