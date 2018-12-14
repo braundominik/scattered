@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <title>ar-test</title>
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
-    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"> </script>
-
-    <!-- <script src="main.js"></script> -->
+    <title>AR</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/style.css" />
+    <script src="./js/three.min.js"></script>
+    <script src="./js/stats.min.js"></script>
+    <script src="./js/ar.min.js"></script>
+    <script>THREEx.ArToolkitContext.baseURL = '../'</script>
+    <script src="./js/main.js"></script>
 </head>
-
-<body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs="sourceType: webcam;">
-        <a-marker preset="hiro">
-
-            <a-entity obj-model="obj: url(./data/model.obj); 
-            mtl: url(./data/materials.mtl)">
-            </a-entity>
-
-        </a-marker>
-        <a-entity camera>
-        </a-entity>
-    </a-scene>
+<body>
+<div>
+    Hello. This is a test.
+</div>
 </body>
-
 </html>
