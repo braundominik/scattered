@@ -96,7 +96,7 @@ function init() {
     mesh.position.y = geometry.parameters.height / 2
     arWorldRoot.add(mesh);
 
-    var geometry = new THREE.TorusKnotGeometry(0.3, 0.1, 64, 16);
+    /* var geometry = new THREE.TorusKnotGeometry(0.3, 0.1, 64, 16);
     var material = new THREE.MeshNormalMaterial();
     var mesh = new THREE.Mesh(geometry, material);
     mesh.position.y = 0.5
@@ -104,7 +104,7 @@ function init() {
 
     onRenderFcts.push(function () {
         mesh.rotation.x += 0.1
-    })
+    }) */
 
     var stats = new Stats();
     document.body.appendChild(stats.dom);
