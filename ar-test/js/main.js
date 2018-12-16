@@ -87,15 +87,38 @@ function init() {
     var arWorldRoot = smoothedRoot
     // add a torus knot	
 
-    var geometry = new THREE.CubeGeometry(1, 1, 1);
-    var material = new THREE.MeshNormalMaterial({
-        transparent: true,
-        opacity: 0.5,
-        side: THREE.DoubleSide
+
+    var loader = new THREE.TextureLoader();
+    //var normal = loader.load('loader-test/textures/normal.jpg');
+
+    var loader = new THREE.TDSLoader();
+    loader.setResourcePath('textures/');
+    loader.load('dandelion.3ds', function (object) {
+
+        object.traverse(function (child) {
+
+            if (child instanceof THREE.Mesh) {
+
+                //child.material.normalMap = normal;
+
+            }
+
+        });
+        arWorldRoot.add( new THREE.HemisphereLight() );
+        //object.position.y = 0.5
+        arWorldRoot.add(object);
+
     });
-    var mesh = new THREE.Mesh(geometry, material);
-    mesh.position.y = geometry.parameters.height / 2
-    arWorldRoot.add(mesh);
+
+    /*     var geometry = new THREE.CubeGeometry(1, 1, 1);
+        var material = new THREE.MeshNormalMaterial({
+            transparent: true,
+            opacity: 0.5,
+            side: THREE.DoubleSide
+        });
+        var mesh = new THREE.Mesh(geometry, material);
+        mesh.position.y = geometry.parameters.height / 2
+        arWorldRoot.add(mesh); */
 
 
     /* var geometry = new THREE.TorusKnotGeometry(0.3, 0.1, 64, 16);
