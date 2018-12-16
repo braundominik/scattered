@@ -10,7 +10,12 @@ function init() {
 
     function showPosition(position) {
         console.log(position);
-        pos.innerText = position.coords.latitude+", "+position.coords.longitude;
+        getSquareCorners(position);
+        pos.innerText = position.coords.latitude + ", " + position.coords.longitude;
+    }
+
+    function getSquareCorners(pos){
+        
     }
 
     getLocation();
