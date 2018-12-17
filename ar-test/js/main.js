@@ -88,27 +88,63 @@ function init() {
     // add a torus knot	
 
 
-    var loader = new THREE.TextureLoader();
-    //var normal = loader.load('loader-test/textures/normal.jpg');
+    /*     var loader = new THREE.TextureLoader();
+        //var normal = loader.load('loader-test/textures/normal.jpg');
+    
+        var loader = new THREE.TDSLoader();
+        loader.setResourcePath('textures/');
+        loader.load('dandelion.3ds', function (object) {
+    
+            object.traverse(function (child) {
+    
+                if (child instanceof THREE.Mesh) {
+    
+                    //child.material.normalMap = normal;
+    
+                }
+    
+            });
+            arWorldRoot.add( new THREE.HemisphereLight() );
+            //object.position.y = 0.5
+            arWorldRoot.add(object);
+    
+        }); */
 
-    var loader = new THREE.TDSLoader();
-    loader.setResourcePath('textures/');
-    loader.load('dandelion.3ds', function (object) {
 
-        object.traverse(function (child) {
+    var onProgress = function (xhr) {
 
-            if (child instanceof THREE.Mesh) {
+        if (xhr.lengthComputable) {
 
-                //child.material.normalMap = normal;
+            var percentComplete = xhr.loaded / xhr.total * 100;
+            console.log(Math.round(percentComplete, 2) + '% downloaded');
 
-            }
+        }
+
+    };
+
+    var onError = function () { };
+
+    THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+
+    new THREE.MTLLoader()
+        .setPath('dand/')
+        .load('dand.mtl', function (materials) {
+
+            materials.preload();
+
+            new THREE.OBJLoader()
+                .setMaterials(materials)
+                .setPath('dand/')
+                .load('dand.obj', function (object) {
+
+                    object.position.y = 0;
+                    object.rotation.x = -1.5;
+                    arWorldRoot.add(new THREE.HemisphereLight());
+                    arWorldRoot.add(object);
+
+                }, onProgress, onError);
 
         });
-        arWorldRoot.add( new THREE.HemisphereLight() );
-        //object.position.y = 0.5
-        arWorldRoot.add(object);
-
-    });
 
     /*     var geometry = new THREE.CubeGeometry(1, 1, 1);
         var material = new THREE.MeshNormalMaterial({
