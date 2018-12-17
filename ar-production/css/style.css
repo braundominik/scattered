@@ -5,6 +5,7 @@ body{
 }
 
 div{
+    color: white;
     position: absolute;
     top: 10px;
     width:100%;
