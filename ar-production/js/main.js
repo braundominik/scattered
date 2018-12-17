@@ -2,6 +2,8 @@ window.addEventListener("load", init);
 
 function init() {
 
+    let loadText = document.getElementById("loading");
+
     var renderer = new THREE.WebGLRenderer({
         alpha: true
     });
@@ -94,6 +96,7 @@ function init() {
 
             var percentComplete = xhr.loaded / xhr.total * 100;
             console.log(Math.round(percentComplete, 2) + '% downloaded');
+            loadText.textContent = Math.round(percentComplete, 2) + '% downloaded'
 
         }
 
