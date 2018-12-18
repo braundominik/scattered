@@ -25,8 +25,6 @@ function init() {
     //LOCATION
 
 
-
-
     //FIRESTORE
 
     //const dandList = document.getElementById("dand-list");

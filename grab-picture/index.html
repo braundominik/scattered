@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CameraTest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script>
+</head>
+
+<body>
+
+    <div class="col-md-6">
+        <video id="takephoto-video" > <!-- width="320" height="320" --> Video stream not available. </video>
+        <button id="takephoto-startbutton" class="btn btn-default btn-block" style="width:320px;"> Take photo</button>
+        <canvas id="takephoto-canvas" class="hide"></canvas>
+    </div>
+    <div class="col-md-6">
+        <div class="hide" id="takephoto-previewarea">
+            <img id="takephoto-preview" alt="The screen capture will appear in this box."  /> <!-- width="320" height="320" -->
+            <a href="#" class="btn btn-default btn-block" style="width:320px;margin-top:5px;" download id="takephoto-download">
+                Download photo</a>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
