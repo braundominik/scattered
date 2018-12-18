@@ -93,12 +93,12 @@ function handleComplete() {
         container: document.getElementById("textAnim"), // the dom element that will contain the animation
         renderer: 'svg',
         loop: false,
-        autoplay: false,
+        autoplay: true,
         path: './animations/loading.json' // the path to the animation json
     });
     plantActionAnimation.addEventListener("data_ready", function () {
         setupSVGs();
-        animationLoop();
+        //animationLoop();
     })
 }
 
@@ -107,7 +107,7 @@ function animationLoop() {
 
     if (currentFrame < 95) {
 
-        if (soundValue > 0.004) {
+        if (soundValue > 0.00004) {
             plantActionAnimation.playSegments([currentFrame, currentFrame + 5])
             currentFrame = currentFrame + 6;
         }
