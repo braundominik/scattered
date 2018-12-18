@@ -27,7 +27,7 @@
     // width to the value defined here, but the height will be
     // calculated based on the aspect ratio of the input stream.
 
-    var width = "100%"; // We will scale the photo width to this
+    var width = window.innerWidth; // We will scale the photo width to this
     var height = 0; // This will be computed based on the input stream
 
     // |streaming| indicates whether or not we're currently streaming
@@ -40,16 +40,18 @@
 
     var video = null;
     var canvas = null;
-    var photo = null;
     var startbutton = null;
+    let cameraWrap = null;
 
     function startup() {
+        cameraWrap = document.getElementsByClassName("camera-wrap");
         video = document.getElementById('takephoto-video');
         canvas = document.getElementById('takephoto-canvas');
         photo = document.getElementById('takephoto-preview');
         previewarea = document.getElementById('takephoto-previewarea');
         startbutton = document.getElementById('takephoto-startbutton');
         downloadbutton = document.getElementById('takephoto-download');
+
 
         navigator.getMedia = (navigator.getUserMedia ||
             navigator.webkitGetUserMedia ||
@@ -90,6 +92,9 @@
                 canvas.setAttribute('width', width);
                 canvas.setAttribute('height', height);
                 streaming = true;
+                let diff = Math.abs(width-height);
+                video.style.clipPath = "inset(0px "+diff/2+"px)";
+                cameraWrap[0].style.marginTop = (window.innerHeight/2 - height/2) + "px";
             }
         }, false);
 
@@ -98,6 +103,7 @@
             ev.preventDefault();
         }, false);
 
+        
         clearphoto();
     }
 
@@ -110,7 +116,7 @@
         context.fillRect(0, 0, canvas.width, canvas.height);
 
         var data = canvas.toDataURL('image/png');
-        photo.setAttribute('src', data);
+        //photo.setAttribute('src', data);
     }
 
     // Capture a photo by fetching the current contents of the video
@@ -128,10 +134,10 @@
             context.drawImage(video, -50, 0, width, height);
 
             var data = canvas.toDataURL('image/png');
-            photo.setAttribute('src', data);
+            //photo.setAttribute('src', data);
 
-            previewarea.classList.remove("hide");
-            downloadbutton.href = data;
+            //previewarea.classList.remove("hide");
+            //downloadbutton.href = data;
 
             // FULL EXAMPLE
 

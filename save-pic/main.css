@@ -1,0 +1,14 @@
+.hide {
+    display:none;
+  }
+video{
+    /* object-fit: cover; */
+}
+
+body{
+    margin: 0;
+}
+
+html{
+    background-color: black;
+}
