@@ -57,7 +57,7 @@
             navigator.msGetUserMedia);
 
         navigator.getMedia({
-            video: true,
+            video: { facingMode: { exact: "environment" } },
             audio: false
         },
             function (stream) {
