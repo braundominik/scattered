@@ -81,33 +81,49 @@ function plantTransition() {
     outroGlobeAnimation.play();
     outroGlobeAnimation.play();
     outroGlobeAnimation.addEventListener("complete", handleComplete);
-    console.log("test");    
 }
 
 function handleComplete() {
+    console.log(soundValue);
     outroGlobeAnimation.removeEventListener("complete", handleComplete);
     globeAnimation.destroy();
     textAnimation.destroy();
-    console.log("complete");
     document.getElementById("textAnim").style.height = "100%";
     plantActionAnimation = bodymovin.loadAnimation({
         container: document.getElementById("textAnim"), // the dom element that will contain the animation
         renderer: 'svg',
         loop: false,
-        autoplay: true,
-        path: './animations/plantAction.json' // the path to the animation json
+        autoplay: false,
+        path: './animations/loading.json' // the path to the animation json
     });
-    plantActionAnimation.addEventListener("data_ready", function(){
+    plantActionAnimation.addEventListener("data_ready", function () {
         setupSVGs();
+        animationLoop();
     })
-    
+}
+
+let currentFrame = 0;
+function animationLoop() {
+
+    if (currentFrame < 95) {
+
+        if (soundValue > 0.004) {
+            plantActionAnimation.playSegments([currentFrame, currentFrame + 5])
+            currentFrame = currentFrame + 6;
+        }
+        else if (currentFrame > 0) {
+            plantActionAnimation.playSegments([currentFrame, currentFrame - 1])
+            currentFrame--;
+        }
+        console.log(currentFrame);
+        setTimeout(animationLoop, 50);
+    }
 }
 
 function setupSVGs() {
     console.log("setupSVGs");
     let $svg = document.getElementsByTagName('svg');
     Array.from($svg).forEach(element => {
-        console.log(element);
         element.setAttribute('preserveAspectRatio', 'xMidYMax slice');
         //element.style.height = availHeight + "px";
     })
