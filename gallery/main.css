@@ -1,0 +1,27 @@
+.galleryimg{
+    /* box-sizing: border-box;
+    width: 33%;
+    float: left;
+    border:3px solid;
+    border-radius: 10px; */
+
+    /* flex: 1 0 33%;
+    width: 33%;
+    height: 33%;
+    background-color: blue; */
+
+}
+
+.parent {
+    /* display: flex;
+    flex-wrap: wrap; */
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+
+*{
+    margin:0;
+    padding:0;
+}
