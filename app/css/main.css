@@ -29,7 +29,7 @@
     overflow: scroll;
   }
   .gallery-item{
-    background-image: url("../imgs/baseimg.png");
+    background-image: url("../imgs/baseimg.png"); 
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
