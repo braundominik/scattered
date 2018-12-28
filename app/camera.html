@@ -5,20 +5,42 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>CameraTest</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/camera.css" />
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
 </head>
 
 <body>
+    <div class="wrapper">
+        <div class="box mainScreen">
 
-    <div class="camera-wrap">
-        <video id="takephoto-video" > <!-- width="320" height="320" --> Video stream not available. </video>
-        <button id="takephoto-startbutton" class="btn btn-default btn-block" style="width:100%;"> Take photo</button>
-        <canvas id="takephoto-canvas" class="hide"></canvas>
+
+            <div class="camera-wrap">
+                <video id="takephoto-video">
+                    <!-- width="320" height="320" --> Video stream not available. </video>
+                <button id="takephoto-startbutton" class="btn btn-default btn-block" style="width:100%;"> Take photo</button>
+                <canvas id="takephoto-canvas" class="hide"></canvas>
+            </div>
+            <script src="js/camera.js"></script>
+
+        </div>
+        <div class="box menuWrapper">
+            <a href="camera.html">
+                <div class="box menu1">Foto</div>
+            </a>
+
+            <a href="index.html">
+                <div class="box menu2">Gallery</div>
+            </a>
+
+            <a href="http://">
+                <div class="box menu3">Menu 3</div>
+            </a>
+        </div>
     </div>
-    <script src="js/camera.js"></script>
 </body>
 
 </html>

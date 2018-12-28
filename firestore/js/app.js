@@ -45,9 +45,14 @@ function init() {
         }
         */
 
-    db.collection("dandelions").doc("ZpMBHQk6BoQntCnCL4dz").collection("seeds").get().then((snapshot) => {
+    db.collection("dandelions").doc("OTZmsX1i98PH6bHlHG3x").collection("seeds").get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
-            console.log(doc.data().loc);
+            console.log(doc.id);
+            if(doc.data().img == "sasa"){
+                db.collection("dandelions").doc("OTZmsX1i98PH6bHlHG3x").collection("seeds").doc(doc.id).update({
+                    img: ""
+                })
+            }
         })
     })
 
