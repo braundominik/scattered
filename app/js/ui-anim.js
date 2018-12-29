@@ -1,5 +1,7 @@
 window.addEventListener("load", init);
 let video = null;
+let settingsWrapElement = null;
+let loginWrapElement = null;
 
 function init() {
     let cameraButton = document.querySelector(".menu1");
@@ -7,7 +9,8 @@ function init() {
     let settingsButton = document.querySelector(".menu3");
 
     let cameraWrapElement = document.querySelector(".camera-wrap");
-    let settingsWrapElement = document.querySelector(".settingsWrapper");
+    settingsWrapElement = document.querySelector(".settingsWrapper");
+    loginWrapElement = document.querySelector(".loginWrap");
     video = document.getElementById('takephoto-video');
 
     cameraButton.addEventListener("click", loadCamera);
@@ -19,6 +22,7 @@ function init() {
         /* Unloading other UI Elements */
         unloadSettings();
         unloadOverview();
+        unloadLogin();
 
         /* Loading Camera */
         startup();
@@ -49,6 +53,7 @@ function init() {
         /* Unloading other UI Elements */
         unloadSettings();
         unloadCamera();
+        unloadLogin();
 
         /* Loading Overview */
         overview.style.display = "grid";
@@ -68,6 +73,7 @@ function init() {
     function loadSettings() {
 
         /* Unloading other UI Elements */
+        unloadLogin()
         unloadOverview();
         unloadCamera();
 
@@ -76,7 +82,17 @@ function init() {
 
     }
 
-    function unloadSettings() {
-        settingsWrapElement.style.display = "none";
-    }
+
+}
+
+function unloadSettings() {
+    settingsWrapElement.style.display = "none";
+}
+
+function unloadLogin() {
+    loginWrapElement.style.display = "none";
+}
+
+function loadLogin() {
+    loginWrapElement.style.display = "flex";
 }

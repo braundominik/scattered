@@ -3,22 +3,24 @@ let gallery = document.querySelector(".gallery");
 let mainScreen = document.querySelector(".mainScreen");
 
 function init() {
-    buildGallery();
+    buildGallery("OTZmsX1i98PH6bHlHG3x");
     //showGallery();
 }
 
 
 function showGallery() {
-    let height = mainScreen.clientHeight;
-    gallery.style.height = height + "px";
+
     gallery.style.display = "grid";
 }
 
-function buildGallery() {
-
+function buildGallery(key) {
+    let height = mainScreen.clientHeight;
+    gallery.style.height = height + "px";
+    gallery.innerHTML = "";
     //create Gallery Items and load Images
-    db.collection("dandelions").doc("OTZmsX1i98PH6bHlHG3x").collection("seeds").get().then((snapshot) => {
+    db.collection("dandelions").doc(key).collection("seeds").get().then((snapshot) => {
         let totalItems = snapshot.size;
+        console.log(totalItems);
         snapshot.docs.forEach(doc => {
             if (doc.data().img != "") {
                 totalItems--;

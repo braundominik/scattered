@@ -11,27 +11,38 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/overview.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/camera.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/settings.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/login.css" />
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
     <script defer src="js/firebase.js"></script>
     <script defer src="js/gallery.js"></script>
     <script defer src="js/overview.js"></script>
     <script defer src="js/camera.js"></script>
     <script defer src="js/ui-anim.js"></script>
-    
+    <script defer src="js/login.js"></script>
+
 </head>
 
 <body>
     <div class="wrapper">
+
         <div class="box mainScreen">
+
+            <!-- LOGIN -->
+            <div class="loginWrap">
+                <form class="loginAction">
+                    <div>Bitte melden Sie sich an</div>
+                    <input type="text" placeholder="E-Mail">
+                    <input type="password" placeholder="Passwort">
+                    <button type="submit">Login or Register</button>
+                </form>
+            </div>
+
 
             <!-- OVERVIEW LIST -->
             <div class="ovwrapper">
-                <div class="ovlist">TEST</div>
-                <div class="ovlist">TEST</div>
-                <div class="ovlist">TEST</div>
-                <div class="ovlist">TEST</div>
             </div>
             <!-- GALLERY -->
             <div class="gallery">
@@ -49,7 +60,8 @@
 
             <!-- SETTINGS -->
             <div class="settingsWrapper">
-                Dies ist eine Seite für Einstellungen
+                <div class="user">No User</div>
+                <button class="logout">Logout</button>
             </div>
 
 
