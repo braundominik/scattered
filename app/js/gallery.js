@@ -1,22 +1,8 @@
 window.addEventListener("load", init);
-let db;
 let gallery = document.querySelector(".gallery");
 let mainScreen = document.querySelector(".mainScreen");
 
 function init() {
-
-    var config = {
-        apiKey: "AIzaSyBzy8dO7sc0d4AaPU3gUjxrySrVV_9uVOM",
-        authDomain: "dandelion-firestore.firebaseapp.com",
-        databaseURL: "https://dandelion-firestore.firebaseio.com",
-        projectId: "dandelion-firestore",
-        storageBucket: "dandelion-firestore.appspot.com",
-        messagingSenderId: "376810902959"
-    };
-    firebase.initializeApp(config);
-
-    db = firebase.firestore();
-    db.settings({ timestampsInSnapshots: true });
     buildGallery();
     //showGallery();
 }

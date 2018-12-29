@@ -9,11 +9,17 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/gallery.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/overview.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/camera.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/settings.css" />
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script>
+    <script defer src="js/firebase.js"></script>
     <script defer src="js/gallery.js"></script>
     <script defer src="js/overview.js"></script>
+    <script defer src="js/camera.js"></script>
     <script defer src="js/ui-anim.js"></script>
+    
 </head>
 
 <body>
@@ -26,34 +32,32 @@
                 <div class="ovlist">TEST</div>
                 <div class="ovlist">TEST</div>
                 <div class="ovlist">TEST</div>
-                <div class="ovlist">TEST</div>
-                <div class="ovlist">TEST</div>
-                <div class="ovlist">TEST</div>
-                <div class="ovlist">TEST</div>
-                <div class="ovlist">TEST</div>
-                <div class="ovlist">TEST</div>
-                <div class="ovlist">TEST</div>
-                <div class="ovlist">TEST</div>
-                <div class="ovlist">TEST</div>
-                <div class="ovlist">TEST</div>
             </div>
             <!-- GALLERY -->
             <div class="gallery">
 
             </div>
 
+
             <!-- CAMERA -->
+            <div class="camera-wrap">
+                <video id="takephoto-video">
+                    <!-- width="320" height="320" --> Video stream not available. </video>
+                <button id="takephoto-startbutton" class="btn btn-default btn-block" style="width:100%;"> Take photo</button>
+                <canvas id="takephoto-canvas" class="hide"></canvas>
+            </div>
+
+            <!-- SETTINGS -->
+            <div class="settingsWrapper">
+                Dies ist eine Seite für Einstellungen
+            </div>
+
+
         </div>
         <div class="box menuWrapper">
-            <a href="camera.html">
-                <div class="box menu1">Foto</div>
-            </a>
-
+            <div class="box menu1">Foto</div>
             <div class="box menu2">Gallery</div>
-
-            <a href="http://">
-                <div class="box menu3">Menu 3</div>
-            </a>
+            <div class="box menu3">Settings</div>
         </div>
     </div>
 </body>

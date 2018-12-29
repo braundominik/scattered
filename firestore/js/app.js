@@ -45,7 +45,7 @@ function init() {
         }
         */
 
-    db.collection("dandelions").doc("OTZmsX1i98PH6bHlHG3x").collection("seeds").get().then((snapshot) => {
+    /* db.collection("dandelions").doc("OTZmsX1i98PH6bHlHG3x").collection("seeds").get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
             console.log(doc.id);
             if(doc.data().img == "sasa"){
@@ -53,6 +53,12 @@ function init() {
                     img: ""
                 })
             }
+        })
+    }) */
+
+    db.collection("dandelions").get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            console.log(doc.data());
         })
     })
 

@@ -1,3 +1,7 @@
+.camera-wrap{
+    display: none;
+}
+
 .hide {
     display:none;
   }
@@ -9,6 +13,6 @@ body{
     margin: 0;
 }
 
-.mainScreen{
+/* .mainScreen{
     background-color: black;
-}
+} */

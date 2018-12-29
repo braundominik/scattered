@@ -3,7 +3,7 @@
  padding:0;   
 }
 
-.menuWrapper>a:nth-child(odd) {
+.menuWrapper>div:nth-child(odd) {
     background: #ddd
 }
 
