@@ -1,5 +1,7 @@
 window.addEventListener("load", init);
 let db;
+let gallery = document.querySelector(".gallery");
+let mainScreen = document.querySelector(".mainScreen");
 
 function init() {
 
@@ -15,17 +17,18 @@ function init() {
 
     db = firebase.firestore();
     db.settings({ timestampsInSnapshots: true });
-
-    showGallery();
+    buildGallery();
+    //showGallery();
 }
 
 
 function showGallery() {
-    let gallery = document.querySelector(".gallery");
-    let mainScreen = document.querySelector(".mainScreen");
     let height = mainScreen.clientHeight;
     gallery.style.height = height + "px";
     gallery.style.display = "grid";
+}
+
+function buildGallery() {
 
     //create Gallery Items and load Images
     db.collection("dandelions").doc("OTZmsX1i98PH6bHlHG3x").collection("seeds").get().then((snapshot) => {

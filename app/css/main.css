@@ -19,31 +19,3 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
-
-.gallery {
-    height: 100%;
-    display: none;
-    grid-template-columns: 1fr 1fr 1fr;
-    place-items: start;
-    grid-gap: 10px;
-    overflow: scroll;
-  }
-  .gallery-item{
-    background-image: url("../imgs/baseimg.png"); 
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-  }
-  .gallery > [style^='--aspect-ratio']::before {
-    content: "";
-    display: inline-block;
-    width: 1px;
-    height: 0;
-    padding-bottom: calc(100% / (var(--aspect-ratio)));
-  }
-
-  .gallery-item{
-    box-sizing: border-box;
-    border: 1px solid transparent;
-    border-radius: 20px;
-  }

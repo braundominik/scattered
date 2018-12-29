@@ -1,0 +1,9 @@
+.ovwrapper>div:nth-child(odd) {
+    background: #ddd
+}
+
+.ovwrapper{
+    display: none;
+    overflow: scroll;
+    grid-auto-rows: minmax(100px, auto);
+}
