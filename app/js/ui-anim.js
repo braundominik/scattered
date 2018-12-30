@@ -2,6 +2,7 @@ window.addEventListener("load", init);
 let video = null;
 let settingsWrapElement = null;
 let loginWrapElement = null;
+let warning = null;
 
 function init() {
     let cameraButton = document.querySelector(".menu1");
@@ -12,6 +13,7 @@ function init() {
     settingsWrapElement = document.querySelector(".settingsWrapper");
     loginWrapElement = document.querySelector(".loginWrap");
     video = document.getElementById('takephoto-video');
+    warning = document.querySelector("warning");
 
     cameraButton.addEventListener("click", loadCamera);
     galleryButton.addEventListener("click", loadOverview);
@@ -25,7 +27,9 @@ function init() {
         unloadLogin();
 
         /* Loading Camera */
-        startup();
+        startup()
+        
+
         cameraWrapElement.style.display = "block";
 
         /* Junk Code */
@@ -38,8 +42,15 @@ function init() {
 
     function unloadCamera() {
         if (video.srcObject != null) {
+            /* console.log(video);
+            console.log(video.srcObject);
+            console.log(video.srcObject.getTracks()); */
             cameraWrapElement.style.display = "none";
-            video.srcObject.getTracks()[0].stop();
+            console.log(allMediaStreams);
+            allMediaStreams.forEach(stream => stream.getTracks().forEach(track => track.stop()));
+            allMediaStreams = [];
+            console.log(allMediaStreams);
+            /* video.srcObject.getTracks()[0].stop(); */
             video.srcObject = null;
         }
 

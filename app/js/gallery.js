@@ -3,13 +3,12 @@ let gallery = document.querySelector(".gallery");
 let mainScreen = document.querySelector(".mainScreen");
 
 function init() {
-    buildGallery("OTZmsX1i98PH6bHlHG3x");
+    //buildGallery("OTZmsX1i98PH6bHlHG3x");
     //showGallery();
 }
 
 
 function showGallery() {
-
     gallery.style.display = "grid";
 }
 

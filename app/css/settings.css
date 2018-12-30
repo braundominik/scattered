@@ -21,3 +21,15 @@
     font-size: 0.9em;
     font-weight: bold;
 }
+
+.warning{
+    z-index: 200;
+    position: absolute;
+    margin-bottom:30%;
+    display: flex;
+    justify-self: center;
+    align-self: flex-end;
+    color: red;
+    font-size: 2em;
+    text-align: center;
+}

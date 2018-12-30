@@ -27,11 +27,16 @@ loginButton.addEventListener("submit", function (_e) {
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
+        buildOverview();
+        warning.style.display = "none";
         currentUser.textContent = user.email;
     } else {
         currentUser.textContent = "no user";
         console.log("Logged out");
         logoutButton.textContent = "Login";
+        overview.innerHTML = "";
+        gallery.innerHTML = "";
+        warning.style.display = "flex";
     }
 });
 

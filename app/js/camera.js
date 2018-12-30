@@ -19,6 +19,7 @@ var streaming = false;
 var canvas = null;
 var startbutton = null;
 let cameraWrap = null;
+let allMediaStreams = [];
 
 function startup() {
     cameraWrap = document.getElementsByClassName("camera-wrap");
@@ -42,6 +43,9 @@ function startup() {
             } else {
                 var vendorURL = window.URL || window.webkitURL;
                 video.srcObject = stream
+                //console.log(video.srcObject);
+                allMediaStreams.push(stream);
+                //console.log(allMediaStreams);
             }
             video.play();
         },
