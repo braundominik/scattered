@@ -70,9 +70,9 @@ function startup() {
             canvas.setAttribute('width', width);
             canvas.setAttribute('height', height);
             streaming = true;
-            /* let diff = Math.abs(width - height);
-            video.style.clipPath = "inset(0px " + diff / 2 + "px)";
-            cameraWrap[0].style.marginTop = (window.innerHeight / 2 - height / 2) + "px"; */
+            let diff = Math.abs(height-width);
+            video.style.clipPath = `inset(${diff/2}px 0px ${diff/2}px 0px)`  ;
+            //cameraWrap[0].style.marginTop = (window.innerHeight / 2 - height / 2) + "px";
         }
     }, false);
 
