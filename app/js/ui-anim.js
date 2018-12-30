@@ -13,7 +13,7 @@ function init() {
     settingsWrapElement = document.querySelector(".settingsWrapper");
     loginWrapElement = document.querySelector(".loginWrap");
     video = document.getElementById('takephoto-video');
-    warning = document.querySelector("warning");
+    warning = document.querySelector(".warning");
 
     cameraButton.addEventListener("click", loadCamera);
     galleryButton.addEventListener("click", loadOverview);
