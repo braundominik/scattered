@@ -14,10 +14,34 @@ function init() {
     loginWrapElement = document.querySelector(".loginWrap");
     video = document.getElementById('takephoto-video');
     warning = document.querySelector(".warning");
+    let flash = document.querySelector(".flash");
+    flash.hidden = true;
 
     cameraButton.addEventListener("click", loadCamera);
     galleryButton.addEventListener("click", loadOverview);
     settingsButton.addEventListener("click", loadSettings);
+    cameraWrapElement.addEventListener("click", shootPic);
+
+    function shootPic() {
+        flash.hidden = false;
+        //flash.animate({ opacity: 0.5 }, 300)
+        var flashanim = flash.animate([
+            // keyframes
+            { opacity: 0.0 },
+            { opacity: 1 },
+            { opacity: 0.0 },
+
+        ], {
+                // timing options
+                duration: 500,
+                iterations: 1
+            });
+
+        flashanim.onfinish = function () {
+            flash.hidden = true;
+        }
+        takepicture();
+    }
 
     function loadCamera() {
 
@@ -28,7 +52,7 @@ function init() {
 
         /* Loading Camera */
         startup()
-        
+
 
         cameraWrapElement.style.display = "block";
 

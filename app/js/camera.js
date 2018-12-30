@@ -17,7 +17,7 @@ var streaming = false;
 // The various HTML elements we need to configure or control. These
 // will be set by the startup() function.
 var canvas = null;
-var startbutton = null;
+/* var startbutton = null; */
 let cameraWrap = null;
 let allMediaStreams = [];
 
@@ -25,7 +25,7 @@ function startup() {
     cameraWrap = document.getElementsByClassName("camera-wrap");
     canvas = document.getElementById('takephoto-canvas');
     photo = document.getElementById('takephoto-preview');
-    startbutton = document.getElementById('takephoto-startbutton');
+    /* startbutton = document.getElementById('takephoto-startbutton'); */
 
 
     navigator.getMedia = (navigator.getUserMedia ||
@@ -76,10 +76,10 @@ function startup() {
         }
     }, false);
 
-    startbutton.addEventListener('click', function (ev) {
+    /* startbutton.addEventListener('click', function (ev) {
         takepicture();
         ev.preventDefault();
-    }, false);
+    }, false); */
 
 
     clearphoto();
