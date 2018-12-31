@@ -25,10 +25,9 @@
 .warning{
     z-index: 200;
     position: absolute;
-    margin-bottom:30%;
-    display: flex;
+    display: none;
     justify-self: center;
-    align-self: flex-end;
+    align-self: center;
     color: red;
     font-size: 2em;
     text-align: center;

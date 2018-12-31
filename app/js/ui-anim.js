@@ -16,6 +16,7 @@ function init() {
     warning = document.querySelector(".warning");
     let flash = document.querySelector(".flash");
     flash.hidden = true;
+    warning.style.visibility = "hidden";
 
     cameraButton.addEventListener("click", loadCamera);
     galleryButton.addEventListener("click", loadOverview);
@@ -125,9 +126,11 @@ function unloadSettings() {
 }
 
 function unloadLogin() {
+    warning.style.visibility = "visible";
     loginWrapElement.style.display = "none";
 }
 
 function loadLogin() {
+    warning.style.visibility = "hidden";
     loginWrapElement.style.display = "flex";
 }
