@@ -30,6 +30,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         buildOverview();
         warning.style.display = "none";
         currentUser.textContent = user.email;
+        logoutButton.textContent = "Logout";
     } else {
         currentUser.textContent = "no user";
         console.log("Logged out");
