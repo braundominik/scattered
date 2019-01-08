@@ -1,123 +1,130 @@
-window.addEventListener("load", init);
+//window.addEventListener("load", init);
 let video = null;
 let settingsWrapElement = null;
 let loginWrapElement = null;
 let warning = null;
 
-function init() {
-    let cameraButton = document.querySelector(".menu1");
-    let galleryButton = document.querySelector(".menu2");
-    let settingsButton = document.querySelector(".menu3");
+//function init() {
+let cameraButton = document.querySelector(".menu1");
+let galleryButton = document.querySelector(".menu2");
+let settingsButton = document.querySelector(".menu3");
 
-    let cameraWrapElement = document.querySelector(".camera-wrap");
-    settingsWrapElement = document.querySelector(".settingsWrapper");
-    loginWrapElement = document.querySelector(".loginWrap");
-    video = document.getElementById('takephoto-video');
-    warning = document.querySelector(".warning");
-    let flash = document.querySelector(".flash");
-    flash.hidden = true;
-    warning.style.visibility = "hidden";
+let cameraWrapElement = document.querySelector(".camera-wrap");
+settingsWrapElement = document.querySelector(".settingsWrapper");
+loginWrapElement = document.querySelector(".loginWrap");
+locWrapElement = document.querySelector(".locwrapper");
+video = document.getElementById('takephoto-video');
+warning = document.querySelector(".warning");
+let flash = document.querySelector(".flash");
+flash.hidden = true;
+warning.style.visibility = "hidden";
 
-    cameraButton.addEventListener("click", loadCamera);
-    galleryButton.addEventListener("click", loadOverview);
-    settingsButton.addEventListener("click", loadSettings);
-    cameraWrapElement.addEventListener("click", shootPic);
+cameraButton.addEventListener("click", loadLoc);
+galleryButton.addEventListener("click", loadOverview);
+settingsButton.addEventListener("click", loadSettings);
+cameraWrapElement.addEventListener("click", shootPic);
+locWrapElement.addEventListener("click",loadCamera);
 
-    function shootPic() {
-        flash.hidden = false;
-        //flash.animate({ opacity: 0.5 }, 300)
-        var flashanim = flash.animate([
-            // keyframes
-            { opacity: 0.0 },
-            { opacity: 1 },
-            { opacity: 0.0 },
+function shootPic() {
+    flash.hidden = false;
+    //flash.animate({ opacity: 0.5 }, 300)
+    var flashanim = flash.animate([
+        // keyframes
+        { opacity: 0.0 },
+        { opacity: 1 },
+        { opacity: 0.0 },
 
-        ], {
-                // timing options
-                duration: 500,
-                iterations: 1
-            });
+    ], {
+            // timing options
+            duration: 500,
+            iterations: 1
+        });
 
-        flashanim.onfinish = function () {
-            flash.hidden = true;
-        }
-        takepicture();
+    flashanim.onfinish = function () {
+        flash.hidden = true;
+    }
+    takepicture();
+}
+
+function loadCamera() {
+
+    /* Unloading other UI Elements */
+    unloadSettings();
+    unloadOverview();
+    unloadLogin();
+    unloadLoc();
+
+    /* Loading Camera */
+    startup()
+
+
+    cameraWrapElement.style.display = "block";
+
+    /* Junk Code */
+    //video.srcObject.getTracks()[0].start();
+    //get Camera Wrapper Element
+    //Get display property Style from CSS File
+    //let cameraWrapStyle = getComputedStyle(cameraWrapElement).display;
+
+}
+
+function unloadCamera() {
+    if (video.srcObject != null) {
+        /* console.log(video);
+        console.log(video.srcObject);
+        console.log(video.srcObject.getTracks()); */
+        cameraWrapElement.style.display = "none";
+        console.log(allMediaStreams);
+        allMediaStreams.forEach(stream => stream.getTracks().forEach(track => track.stop()));
+        allMediaStreams = [];
+        console.log(allMediaStreams);
+        /* video.srcObject.getTracks()[0].stop(); */
+        video.srcObject = null;
     }
 
-    function loadCamera() {
-
-        /* Unloading other UI Elements */
-        unloadSettings();
-        unloadOverview();
-        unloadLogin();
-
-        /* Loading Camera */
-        startup()
-
-
-        cameraWrapElement.style.display = "block";
-
-        /* Junk Code */
-        //video.srcObject.getTracks()[0].start();
-        //get Camera Wrapper Element
-        //Get display property Style from CSS File
-        //let cameraWrapStyle = getComputedStyle(cameraWrapElement).display;
-
+    else {
+        cameraWrapElement.style.display = "none";
     }
+}
 
-    function unloadCamera() {
-        if (video.srcObject != null) {
-            /* console.log(video);
-            console.log(video.srcObject);
-            console.log(video.srcObject.getTracks()); */
-            cameraWrapElement.style.display = "none";
-            console.log(allMediaStreams);
-            allMediaStreams.forEach(stream => stream.getTracks().forEach(track => track.stop()));
-            allMediaStreams = [];
-            console.log(allMediaStreams);
-            /* video.srcObject.getTracks()[0].stop(); */
-            video.srcObject = null;
-        }
+function loadOverview() {
 
-        else {
-            cameraWrapElement.style.display = "none";
-        }
-    }
+    /* Unloading other UI Elements */
+    unloadSettings();
+    unloadCamera();
+    unloadLogin();
+    unloadLoc();
 
-    function loadOverview() {
+    /* Loading Overview */
+    overview.style.display = "grid";
 
-        /* Unloading other UI Elements */
-        unloadSettings();
-        unloadCamera();
-        unloadLogin();
+    /* Junk Code */
+    //Get last part of path eg.: camera.html
+    /* let originURL = window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1);
+    if (originURL == "camera.html") {
+        window.location = "index.html"
+    } */
+}
 
-        /* Loading Overview */
-        overview.style.display = "grid";
+function unloadOverview() {
+    overview.style.display = "none";
+}
 
-        /* Junk Code */
-        //Get last part of path eg.: camera.html
-        /* let originURL = window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1);
-        if (originURL == "camera.html") {
-            window.location = "index.html"
-        } */
-    }
 
-    function unloadOverview() {
-        overview.style.display = "none";
-    }
 
-    function loadSettings() {
 
-        /* Unloading other UI Elements */
-        unloadLogin()
-        unloadOverview();
-        unloadCamera();
+//}
 
-        /* Loading Settings */
-        settingsWrapElement.style.display = "block";
+function loadSettings() {
 
-    }
+    /* Unloading other UI Elements */
+    unloadLogin()
+    unloadOverview();
+    unloadCamera();
+    unloadLoc();
 
+    /* Loading Settings */
+    settingsWrapElement.style.display = "block";
 
 }
 
@@ -133,4 +140,18 @@ function unloadLogin() {
 function loadLogin() {
     warning.style.visibility = "hidden";
     loginWrapElement.style.display = "flex";
+}
+
+function loadLoc() {
+    unloadSettings();
+    unloadOverview();
+    unloadLogin();
+    unloadCamera();
+
+    locWrapElement.style.display = "block";
+
+}
+
+function unloadLoc(){
+    locWrapElement.style.display = "none";
 }

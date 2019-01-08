@@ -7,10 +7,16 @@ loginButton.addEventListener("submit", function (_e) {
     _e.preventDefault();
     let email = _e.srcElement[0].value;
     let password = _e.srcElement[1].value;
-    console.log(email, password);
 
 
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(function(val){
+        console.log(val.operationType);
+        if(val.operationType == "signIn"){
+            loadSettings();
+        }
+    })
+    .catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         if (errorCode == "auth/user-not-found") {
@@ -51,6 +57,8 @@ function logout() {
     }
 
     firebase.auth().signOut().then(function () {
+        unloadSettings();
+        loadLogin();
     }).catch(function (error) {
     });
 }
