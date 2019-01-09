@@ -107,10 +107,10 @@ function takepicture() {
     var context = canvas.getContext('2d');
     if (width && height) {
         console.log(width);
-        canvas.width = height;
-        canvas.height = height;
         let diff = Math.abs(height-width);
         //context.drawImage(video, -50, 0, width, height);
+        canvas.width = width;
+        canvas.height = height;
         context.drawImage(video, 0, (0+diff/2), width, (height-diff/2));
 
         var data = canvas.toDataURL('image/png');
