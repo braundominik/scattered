@@ -29,7 +29,7 @@ function buildGallery(key) {
                 let div = document.createElement("div");
                 div.className = "gallery-item";
                 div.setAttribute("style", "--aspect-ratio: 1/1;");
-                div.style.backgroundImage = "url(" + doc.data().img + ")"
+                div.style.backgroundImage = "url(" + doc.data().img + ")";
                 gallery.appendChild(div);
             }
         })
