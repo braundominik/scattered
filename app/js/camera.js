@@ -111,7 +111,7 @@ function takepicture() {
         //context.drawImage(video, -50, 0, width, height);
         canvas.width = width;
         canvas.height = height;
-        context.drawImage(video, 0, diff*2, width, (height-diff));
+        context.drawImage(video, 0, diff, width, (height));
 
         var data = canvas.toDataURL('image/png');
         //photo.setAttribute('src', data);
