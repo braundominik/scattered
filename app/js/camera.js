@@ -71,7 +71,7 @@ function startup() {
             canvas.setAttribute('height', height);
             streaming = true;
             let diff = Math.abs(height-width);
-            video.style.clipPath = `inset(${diff/2}px 0px ${diff/2}px 0px)`  ;
+            video.style.clipPath = `inset(${diff/2}px 0px ${diff/2}px 0px)`;
             //cameraWrap[0].style.marginTop = (window.innerHeight / 2 - height / 2) + "px";
         }
     }, false);
@@ -109,7 +109,9 @@ function takepicture() {
         console.log(width);
         canvas.width = height;
         canvas.height = height;
-        context.drawImage(video, -50, 0, width, height);
+        let diff = Math.abs(height-width);
+        //context.drawImage(video, -50, 0, width, height);
+        context.drawImage(video, 0, (0+diff/2), width, (height-diff/2));
 
         var data = canvas.toDataURL('image/png');
         //photo.setAttribute('src', data);

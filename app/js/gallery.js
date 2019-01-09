@@ -9,10 +9,12 @@ function init() {
 
 
 function showGallery() {
+    unloadOverview();
     gallery.style.display = "grid";
 }
 
 function buildGallery(key) {
+    showGallery();
     let height = mainScreen.clientHeight;
     gallery.style.height = height + "px";
     gallery.innerHTML = "";
