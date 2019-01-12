@@ -2,6 +2,10 @@
 
 /*------------------- Login ------------------*/
 
+.box.menuWrapper{
+    z-index:3;   
+}
+
 .loginWrap img{
     width: 50%;
 }
