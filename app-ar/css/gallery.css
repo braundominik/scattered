@@ -24,7 +24,6 @@
 
   .gallery-item{
     box-sizing: border-box;
-    border: 1px solid transparent;
     border-radius: 20px;
   }
 
