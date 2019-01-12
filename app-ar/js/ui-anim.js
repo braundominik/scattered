@@ -8,6 +8,7 @@ let warning = null;
 let cameraButton = document.querySelector(".menu1");
 let galleryButton = document.querySelector(".menu2");
 let settingsButton = document.querySelector(".menu3");
+let introVideo = document.getElementById("intro_video");
 
 let menuWrapperElement = document.querySelector(".menuWrapper");
 let cameraWrapElement = document.querySelector(".camera-wrap");
@@ -25,6 +26,9 @@ menuWrapperElement.style.visibility = "hidden";
 cameraButton.addEventListener("click", loadLoc);
 galleryButton.addEventListener("click", loadOverview);
 settingsButton.addEventListener("click", loadSettings);
+introVideo.addEventListener("ended", function(){
+    document.querySelector(".start_video").style.display = "none";
+})
 /* cameraWrapElement.addEventListener("click", shootPic);
 locWrapElement.addEventListener("click",shootPic); */
 
