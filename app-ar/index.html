@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Scattered</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
@@ -21,7 +20,17 @@
     <script defer src="js/firebase.js"></script>
     <script defer src="js/gallery.js"></script>
     <script defer src="js/overview.js"></script>
-    <script defer src="js/camera.js"></script>
+    <!-- <script defer src="js/camera.js"></script> -->
+
+    <script defer src="js/ar/three.min.js"></script>
+    <script defer src="js/loaders/DDSLoader.js"></script>
+    <script defer src="js/loaders/MTLLoader.js"></script>
+    <script defer src="js/loaders/OBJLoader.js"></script>
+    <script defer src="js/ar/ar.min.js"></script>
+    <script defer>THREEx.ArToolkitContext.baseURL = '../'</script>
+
+    <script defer src="js/ar/main.js"></script>
+
     <script defer src="js/ui-anim.js"></script>
     <script defer src="js/login.js"></script>
     <script defer src="js/location.js"></script>
@@ -47,6 +56,7 @@
 
             <!-- LOCATION CHECK -->
             <div class="locwrapper">
+                <div id="loading">Loading</div>
             </div>
 
             <!-- OVERVIEW LIST -->
@@ -61,7 +71,7 @@
             <!-- CAMERA -->
             <div class="camera-wrap">
                 <video id="takephoto-video">
-                    <!-- width="320" height="320" --> Video stream not available. </video>
+                    <!-- width="320" height="320" -->Video stream not available. </video>
                 <!-- <button id="takephoto-startbutton" class="btn btn-default btn-block" style="width:100%;"> Take photo</button> -->
                 <canvas id="takephoto-canvas" class="hide"></canvas>
             </div>
@@ -75,9 +85,15 @@
 
         </div>
         <div class="box menuWrapper">
-            <div class="box menu1"><img src="imgs/world-menuicon.png"></div>
-            <div class="box menu2"><img src="imgs/dandelion-menuicon.png"></div>
-            <div class="box menu3"><img src="imgs/settings-menuicon.png"></div>
+            <div class="box menu1">
+                <img src="imgs/world-menuicon.png">
+            </div>
+            <div class="box menu2">
+                <img src="imgs/dandelion-menuicon.png">
+            </div>
+            <div class="box menu3">
+                <img src="imgs/settings-menuicon.png">
+            </div>
         </div>
     </div>
 </body>

@@ -5,7 +5,7 @@ function init() {
 }
 
 function buildOverview() {
-    overview.innerHTML = "";
+    //overview.innerHTML = "";
     let height = mainScreen.clientHeight;
     overview.style.height = height + "px";
     db.collection("dandelions").get().then((snapshot) => {

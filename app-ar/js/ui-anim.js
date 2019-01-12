@@ -159,6 +159,7 @@ function loadLoc() {
     unloadGallery();
 
     locWrapElement.style.display = "block";
+    startAR();
 
 }
 
