@@ -150,6 +150,9 @@ function loadSettings() {
     animElement.style.display = "block";
     dandelionAnim.play();
 
+    dandelionAnim.addEventListener("data_ready", function (data) {
+        console.log(data);
+    })
 
     dandelionAnim.addEventListener("complete", function () {
         animElement.style.display = "none";
