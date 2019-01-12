@@ -69,7 +69,7 @@ function init() {
     scene.add(markerRoot)
     var artoolkitMarker = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
         type: 'pattern',
-        patternUrl: "./patt.hiro"
+        patternUrl: "./pattern-marker.patt"
         // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
     })
 
