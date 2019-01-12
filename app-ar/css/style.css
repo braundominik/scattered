@@ -1,3 +1,29 @@
+/*------------------- Logo ------------------*/
+
+.logo h1{
+    font-size: 45px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.logo{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.logo img{
+    width: 200px;
+    height: auto;
+    margin-top: 30px;
+}
+
+.logo p{
+    font-family: arial;
+    color: #fff;
+    font-size: 19px;
+    font-style: italic;
+    margin-top: 80px;
+}
 
 
 /*------------------- Login ------------------*/
