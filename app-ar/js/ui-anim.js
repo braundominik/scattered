@@ -9,6 +9,7 @@ let cameraButton = document.querySelector(".menu1");
 let galleryButton = document.querySelector(".menu2");
 let settingsButton = document.querySelector(".menu3");
 
+let menuWrapperElement = document.querySelector(".menuWrapper");
 let cameraWrapElement = document.querySelector(".camera-wrap");
 settingsWrapElement = document.querySelector(".settingsWrapper");
 loginWrapElement = document.querySelector(".loginWrap");
@@ -18,6 +19,8 @@ warning = document.querySelector(".warning");
 let flash = document.querySelector(".flash");
 flash.hidden = true;
 warning.style.visibility = "hidden";
+menuWrapperElement.style.visibility = "hidden";
+
 
 cameraButton.addEventListener("click", loadLoc);
 galleryButton.addEventListener("click", loadOverview);
@@ -128,6 +131,7 @@ function loadSettings() {
 
     /* Loading Settings */
     settingsWrapElement.style.display = "block";
+    menuWrapperElement.style.visibility = "visible"; 
 
 }
 
@@ -138,11 +142,13 @@ function unloadSettings() {
 function unloadLogin() {
     warning.style.visibility = "visible";
     loginWrapElement.style.display = "none";
+
 }
 
 function loadLogin() {
     warning.style.visibility = "hidden";
     loginWrapElement.style.display = "flex";
+    menuWrapperElement.style.visibility = "hidden";
 }
 
 function loadLoc() {
