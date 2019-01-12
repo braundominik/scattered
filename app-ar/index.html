@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Scattered</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/gallery.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/overview.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/camera.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/settings.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/login.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/location.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
+    <script defer src="js/firebase.js"></script>
+    <script defer src="js/gallery.js"></script>
+    <script defer src="js/overview.js"></script>
+    <script defer src="js/camera.js"></script>
+    <script defer src="js/ui-anim.js"></script>
+    <script defer src="js/login.js"></script>
+    <script defer src="js/location.js"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="warning">No User Logged in: No Database Access!</div>
+        <div class="flash"></div>
+
+        <div class="box mainScreen">
+
+            <!-- LOGIN -->
+            <div class="loginWrap">
+                <form class="loginAction">
+                    <div>Bitte melden Sie sich an</div>
+                    <input type="text" placeholder="E-Mail">
+                    <input type="password" placeholder="Passwort">
+                    <button type="submit">Login or Register</button>
+                </form>
+            </div>
+
+            <!-- LOCATION CHECK -->
+            <div class="locwrapper">
+            </div>
+
+            <!-- OVERVIEW LIST -->
+            <div class="ovwrapper">
+            </div>
+            <!-- GALLERY -->
+            <div class="gallery">
+
+            </div>
+
+
+            <!-- CAMERA -->
+            <div class="camera-wrap">
+                <video id="takephoto-video">
+                    <!-- width="320" height="320" --> Video stream not available. </video>
+                <!-- <button id="takephoto-startbutton" class="btn btn-default btn-block" style="width:100%;"> Take photo</button> -->
+                <canvas id="takephoto-canvas" class="hide"></canvas>
+            </div>
+
+            <!-- SETTINGS -->
+            <div class="settingsWrapper">
+                <div class="user">no user</div>
+                <button class="logout">Logout</button>
+            </div>
+
+
+        </div>
+        <div class="box menuWrapper">
+            <div class="box menu1">Foto</div>
+            <div class="box menu2">Gallery</div>
+            <div class="box menu3">Settings</div>
+        </div>
+    </div>
+</body>
+
+</html>

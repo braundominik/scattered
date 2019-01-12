@@ -1,0 +1,29 @@
+.camera-wrap{
+    display: none;
+    background-color: black;
+}
+
+.hide {
+    display:none;
+  }
+video{
+    /* object-fit: cover; */
+}
+
+body{
+    margin: 0;
+}
+
+/* .mainScreen{
+    background-color: black;
+} */
+
+.flash{ 
+    z-index: 10000;
+    position:fixed; 
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:#fff;
+ }

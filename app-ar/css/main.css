@@ -1,0 +1,21 @@
+*{
+ margin:0;
+ padding:0;   
+}
+
+.menuWrapper>div:nth-child(odd) {
+    background: #ddd
+}
+
+.wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 7fr 1fr;
+}
+
+.menuWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
