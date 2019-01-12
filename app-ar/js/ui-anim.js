@@ -25,8 +25,8 @@ menuWrapperElement.style.visibility = "hidden";
 cameraButton.addEventListener("click", loadLoc);
 galleryButton.addEventListener("click", loadOverview);
 settingsButton.addEventListener("click", loadSettings);
-cameraWrapElement.addEventListener("click", shootPic);
-locWrapElement.addEventListener("click",loadCamera);
+/* cameraWrapElement.addEventListener("click", shootPic);
+locWrapElement.addEventListener("click",shootPic); */
 
 function shootPic() {
     flash.hidden = false;
@@ -46,7 +46,7 @@ function shootPic() {
     flashanim.onfinish = function () {
         flash.hidden = true;
     }
-    takepicture();
+    /* takepicture(); */
 }
 
 function loadCamera() {
@@ -131,7 +131,7 @@ function loadSettings() {
 
     /* Loading Settings */
     settingsWrapElement.style.display = "block";
-    menuWrapperElement.style.visibility = "visible"; 
+    menuWrapperElement.style.visibility = "visible";
 
 }
 
@@ -163,6 +163,20 @@ function loadLoc() {
 
 }
 
-function unloadLoc(){
+function unloadLoc() {
     locWrapElement.style.display = "none";
+    let videoEl = document.getElementsByTagName("video")[1];
+    let canvasEl = document.getElementsByTagName("canvas")[1];
+    if (canvasEl != null && videoEl != null) {
+        let stream = videoEl.srcObject;
+        let tracks = stream.getTracks();
+
+        tracks.forEach(function (track) {
+            track.stop();
+        });
+
+        videoEl.srcObject = null;
+        videoEl.parentNode.removeChild(videoEl);
+        canvasEl.parentNode.removeChild(canvasEl);
+    }
 }

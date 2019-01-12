@@ -8,6 +8,10 @@
   }
 video{
     /* object-fit: cover; */
+    z-index: 1 !important;
+}
+canvas{
+    z-index: 2;
 }
 
 body{

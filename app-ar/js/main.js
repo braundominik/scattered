@@ -11,6 +11,7 @@ function startAR(){
     renderer.domElement.style.top = '0px'
     renderer.domElement.style.left = '0px'
     document.body.appendChild(renderer.domElement);
+    renderer.domElement.addEventListener("click", shootPic);
 
     var onRenderFcts = [];
 

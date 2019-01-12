@@ -1,8 +1,14 @@
+.menuWrapper{
+    z-index: 3;
+}
+
+
 .box.menu1, .box.menu2, .box.menu3{
     display: flex; 
     justify-content: center; 
     align-items: center;
     background: #1a2233!important;
+    
 }
 
 .box.menu1:hover, .box.menu2:hover, .box.menu3:hover{
