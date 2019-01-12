@@ -140,3 +140,8 @@ html{
     overflow-x:hidden;
 }
 
+#animation{
+    position:absolute;
+    display: none;
+    z-index: 100;
+}

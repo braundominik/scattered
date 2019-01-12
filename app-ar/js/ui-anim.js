@@ -9,6 +9,7 @@ let cameraButton = document.querySelector(".menu1");
 let galleryButton = document.querySelector(".menu2");
 let settingsButton = document.querySelector(".menu3");
 let introVideo = document.getElementById("intro_video");
+let animElement = document.getElementById("animation");
 
 let menuWrapperElement = document.querySelector(".menuWrapper");
 let cameraWrapElement = document.querySelector(".camera-wrap");
@@ -23,14 +24,23 @@ warning.style.visibility = "hidden";
 menuWrapperElement.style.visibility = "hidden";
 
 
+
 cameraButton.addEventListener("click", loadLoc);
 galleryButton.addEventListener("click", loadOverview);
 settingsButton.addEventListener("click", loadSettings);
-introVideo.addEventListener("ended", function(){
+introVideo.addEventListener("ended", function () {
     document.querySelector(".start_video").style.display = "none";
 })
 /* cameraWrapElement.addEventListener("click", shootPic);
 locWrapElement.addEventListener("click",shootPic); */
+
+dandelionAnim = bodymovin.loadAnimation({
+    container: document.getElementById("animation"), // the dom element that will contain the animation
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    path: 'animations/dandelion.json' // the path to the animation json
+})
 
 function shootPic() {
     flash.hidden = false;
@@ -136,10 +146,19 @@ function loadSettings() {
     unloadLoc();
     unloadGallery();
 
-    /* Loading Settings */
-    settingsWrapElement.style.display = "block";
-    menuWrapperElement.style.visibility = "visible";
-    settingsButton.firstElementChild.style.opacity = "1";
+
+    animElement.style.display = "block";
+    dandelionAnim.play();
+
+
+    dandelionAnim.addEventListener("complete", function () {
+        animElement.style.display = "none";
+        /* Loading Settings */
+        settingsWrapElement.style.display = "block";
+        menuWrapperElement.style.visibility = "visible";
+        settingsButton.firstElementChild.style.opacity = "1";
+    })
+
 
 }
 
