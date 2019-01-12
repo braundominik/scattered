@@ -2,6 +2,7 @@
     height: 100%;
     display: none;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     place-items: start;
     grid-gap: 10px;
     overflow: scroll;
