@@ -128,14 +128,14 @@ function init() {
 
     new THREE.MTLLoader()
         .setPath('dand/')
-        .load('dand.mtl', function (materials) {
+        .load('untitled.mtl', function (materials) {
 
             materials.preload();
 
             new THREE.OBJLoader()
                 .setMaterials(materials)
                 .setPath('dand/')
-                .load('dand.obj', function (object) {
+                .load('untitled.obj', function (object) {
 
                     object.position.y = 0;
                     object.rotation.x = -1.5;
