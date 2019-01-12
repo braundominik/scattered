@@ -40,7 +40,7 @@ input {
 
 .wrapper{
     background-size: cover;
-    background-image: url(file:///Users/Mario/Desktop/scattered-master/app/login.jpg);
+    background-image: url(login.jpg);
 }
 
 .loginAction{
