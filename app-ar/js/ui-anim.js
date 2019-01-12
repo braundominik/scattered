@@ -102,6 +102,8 @@ function loadOverview() {
 
     /* Loading Overview */
     overview.style.display = "grid";
+    console.log(galleryButton);
+    galleryButton.firstElementChild.style.opacity = "1";
 
     /* Junk Code */
     //Get last part of path eg.: camera.html
@@ -113,6 +115,7 @@ function loadOverview() {
 
 function unloadOverview() {
     overview.style.display = "none";
+    galleryButton.firstElementChild.style.opacity = "0.5";
 }
 
 
@@ -132,11 +135,13 @@ function loadSettings() {
     /* Loading Settings */
     settingsWrapElement.style.display = "block";
     menuWrapperElement.style.visibility = "visible";
+    settingsButton.firstElementChild.style.opacity = "1";
 
 }
 
 function unloadSettings() {
     settingsWrapElement.style.display = "none";
+    settingsButton.firstElementChild.style.opacity = "0.5";
 }
 
 function unloadLogin() {
@@ -159,12 +164,14 @@ function loadLoc() {
     unloadGallery();
 
     locWrapElement.style.display = "block";
+    cameraButton.firstElementChild.style.opacity = "1";
     startAR();
 
 }
 
 function unloadLoc() {
     locWrapElement.style.display = "none";
+    cameraButton.firstElementChild.style.opacity = "0.5";
     let videoEl = document.getElementsByTagName("video")[1];
     let canvasEl = document.getElementsByTagName("canvas")[1];
     if (canvasEl != null && videoEl != null) {
