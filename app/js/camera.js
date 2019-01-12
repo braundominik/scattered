@@ -109,7 +109,7 @@ function takepicture() {
         console.log(width);
         let diff = Math.abs(height-width);
         //context.drawImage(video, -50, 0, width, height);
-        canvas.width = width;
+        canvas.width = width-diff;
         canvas.height = height;
         context.drawImage(video, 0, 0, width, height);
 
