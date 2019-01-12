@@ -39,7 +39,7 @@ dandelionAnim = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'animations/dandelion.json' // the path to the animation json
+    path: 'animations/data.json' // the path to the animation json
 })
 
 function shootPic() {
