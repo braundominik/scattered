@@ -104,5 +104,9 @@ h1{
 
 
 
+/*------------------- No horiontal scrolling ------------------*/
 
+html{
+    overflow-x:hidden;
+}
 
