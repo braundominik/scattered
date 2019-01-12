@@ -64,7 +64,7 @@ function init() {
 
 
     function plantFlower() {
-        seedAmount = 10 + (Math.floor(Math.random() * 40));
+        seedAmount = 5
         console.log(seedAmount);
 
         db.collection("dandelions").add({

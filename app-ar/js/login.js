@@ -10,24 +10,48 @@ loginButton.addEventListener("submit", function (_e) {
 
 
     firebase.auth().signInWithEmailAndPassword(email, password)
-    .then(function(val){
-        console.log(val.operationType);
-        if(val.operationType == "signIn"){
-            loadSettings();
-        }
-    })
-    .catch(function (error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        if (errorCode == "auth/user-not-found") {
-            console.log("user not found creating new account");
-            firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                console.log(errorCode, errorMessage);
-            });
-        }
-    });
+        .then(function (val) {
+            console.log(val.operationType);
+            if (val.operationType == "signIn") {
+                loadSettings();
+            }
+        })
+        .catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode == "auth/user-not-found") {
+                console.log("user not found creating new account");
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then(function (user) {
+
+
+                        seedAmount = 5
+                        console.log(`Creating ${seedAmount} seeds`);
+                        console.log(seedAmount);
+                        console.log(user);
+                        console.log(user.user.uid);
+
+                        db.collection("dandelions").add({
+                            owner: user.user.uid,
+                            seeds: seedAmount
+                        })
+                            .then((docRef) => {
+                                for (let i = 0; i < seedAmount; i++) {
+                                    db.collection("dandelions").doc(docRef.id).collection("seeds").add({
+                                        img: "",
+                                        //loc: new firebase.firestore.GeoPoint(45, 8)
+                                    })
+                                }
+                            })
+
+                    })
+                    .catch(function (error) {
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        console.log(errorCode, errorMessage);
+                    });
+            }
+        });
 
 })
 
