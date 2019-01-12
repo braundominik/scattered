@@ -23,12 +23,16 @@ input{
 
 .loginWrap div{
     text-align: center;
-    margin: 20% auto;
     font-size: 1.4em;
 }
+
+.loginAction div {
+    margin: 10% auto;
+}
+    
 .loginWrap{
     height: 100%;
-    display:flex;
+    display:grid;
     align-items: center;
     justify-content: center;
 }
