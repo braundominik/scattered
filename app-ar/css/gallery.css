@@ -5,6 +5,8 @@
     place-items: start;
     grid-gap: 10px;
     overflow: scroll;
+    width: 90%;
+    margin: auto auto;
   }
   .gallery-item{
     background-image: url("../imgs/baseimg.png"); 
@@ -25,3 +27,7 @@
     border: 1px solid transparent;
     border-radius: 20px;
   }
+
+.gallery-item:nth-child(1), .gallery-item:nth-child(2), .gallery-item:nth-child(3){
+    margin-top: 30px;
+}
