@@ -56,7 +56,7 @@ function takepicture() {
         canvas.width = window.innerWidth;
         canvas.style.marginLeft = "0px";
         canvas.height = window.innerWidth;
-        canvas.style.width = video.style.width;
+        //canvas.style.width = video.style.width;
         context.drawImage(video, 0, 0);
 
         var data = canvas.toDataURL('image/png');
