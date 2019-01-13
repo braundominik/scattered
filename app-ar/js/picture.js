@@ -53,9 +53,9 @@ function takepicture() {
     if (width && height) {
         //context.drawImage(video, -50, 0, width, height);
 
-        canvas.width = window.innerWidth;
+        /* canvas.width = window.innerWidth;
         canvas.style.marginLeft = "0px";
-        canvas.height = window.innerWidth;
+        canvas.height = window.innerWidth; */
         //canvas.style.width = video.style.width;
         context.drawImage(video, 0, 0);
 
