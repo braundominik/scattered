@@ -1,5 +1,6 @@
-function startAR(){
 
+function startAR() {
+    let listenerAdded = false;
     let loadText = document.getElementById("loading");
 
     var renderer = new THREE.WebGLRenderer({
@@ -58,7 +59,7 @@ function startAR(){
 
     arToolkitContext.init(function onCompleted() {
         console.log(arToolkitContext);
-        startup(arToolkitContext.arController.canvas);
+        startup(arToolkitContext.arController.canvas, arToolkitSource.domElement);
         // copy projection matrix to camera
         camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
     })
@@ -99,10 +100,13 @@ function startAR(){
             console.log(Math.round(percentComplete, 2) + '% downloaded');
             loadText.textContent = Math.round(percentComplete, 2) + '% downloaded'
 
-            if(percentComplete == 100){
+            /* if (percentComplete == 100 && listenerAdded == false) {
+                listenerAdded = true;
                 renderer.domElement.addEventListener("click", shootPic);
+                console.log(arToolkitSource);
+                console.log(renderer.domElement);
                 console.log("picture activated");
-            }
+            } */
 
         }
 
@@ -135,7 +139,7 @@ function startAR(){
 
         });
 
-   
+
     // render the scene
     onRenderFcts.push(function () {
         renderer.render(scene, camera);

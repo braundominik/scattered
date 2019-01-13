@@ -7,7 +7,7 @@
 // calculated based on the aspect ratio of the input stream.
 
 let width = window.innerWidth; // We will scale the photo width to this
-let height = width; // This will be computed based on the input stream
+let height = window.innerHeight; // This will be computed based on the input stream
 
 // |streaming| indicates whether or not we're currently streaming
 // video from the camera. Obviously, we start at false.
@@ -22,8 +22,10 @@ let canvas = null;
 let cameraWrap = null;
 let allMediaStreams = [];
 
-function startup(_canvas) {
+function startup(_canvas, _video) {
     canvas = _canvas;
+    video = _video;
+    document.addEventListener("click", shootPic);
     clearphoto();
 }
 
@@ -49,12 +51,16 @@ function clearphoto() {
 function takepicture() {
     var context = canvas.getContext('2d');
     if (width && height) {
-        console.log(canvas);
-        console.log(context);
         //context.drawImage(video, -50, 0, width, height);
-        canvas.width = width;
-        canvas.height = height;
-        context.drawImage(video, 0, 0, width, height);
+        canvas.width = window.innerWidth;
+        canvas.style.marginLeft = "0px";
+        canvas.height = window.innerWidth;
+        canvas.style.width = window.innerWidth + "px";
+        context.drawImage(video, 0, 0);
+        console.log(video.height);
+        console.log(video.width);
+        console.log(canvas.height);
+        console.log(canvas.width);
 
         var data = canvas.toDataURL('image/png');
         //photo.setAttribute('src', data);
