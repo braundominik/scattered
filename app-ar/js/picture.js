@@ -52,15 +52,12 @@ function takepicture() {
     var context = canvas.getContext('2d');
     if (width && height) {
         //context.drawImage(video, -50, 0, width, height);
+
         canvas.width = window.innerWidth;
         canvas.style.marginLeft = "0px";
         canvas.height = window.innerWidth;
-        canvas.style.width = window.innerWidth + "px";
+        canvas.style.width = video.style.width;
         context.drawImage(video, 0, 0);
-        console.log(video.height);
-        console.log(video.width);
-        console.log(canvas.height);
-        console.log(canvas.width);
 
         var data = canvas.toDataURL('image/png');
         //photo.setAttribute('src', data);
