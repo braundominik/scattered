@@ -49,10 +49,10 @@ function clearphoto() {
 function takepicture() {
     var context = canvas.getContext('2d');
     if (width && height) {
-        console.log(width);
-        let diff = Math.abs(height-width);
+        console.log(canvas);
+        console.log(context);
         //context.drawImage(video, -50, 0, width, height);
-        canvas.width = width-diff;
+        canvas.width = width;
         canvas.height = height;
         context.drawImage(video, 0, 0, width, height);
 
