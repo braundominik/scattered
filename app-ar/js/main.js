@@ -71,11 +71,23 @@ function startAR() {
 
     var markerRoot = new THREE.Group
     scene.add(markerRoot)
-    var artoolkitMarker = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
-        type: 'pattern',
-        patternUrl: "./patt.hiro"
-        // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
-    })
+
+    if (activeMarkers[0]) {
+        var artoolkitMarker = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
+            type: 'pattern',
+            patternUrl: "./patt.hiro"
+            // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
+        })
+    }
+
+    if (activeMarkers[1]) {
+        var artoolkitMarker2 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
+            type: 'pattern',
+            patternUrl: "./pattern-marker.patt"
+            // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
+        })
+    }
+
 
     var smoothedRoot = new THREE.Group()
     scene.add(smoothedRoot)

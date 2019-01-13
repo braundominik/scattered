@@ -1,7 +1,7 @@
 let loginButton = document.querySelector(".loginAction");
 let currentUser = document.querySelector(".user");
 let logoutButton = document.querySelector(".logout");
-
+let activeMarkers = [];
 
 loginButton.addEventListener("submit", function (_e) {
     _e.preventDefault();
@@ -13,6 +13,19 @@ loginButton.addEventListener("submit", function (_e) {
         .then(function (val) {
             console.log(val.operationType);
             if (val.operationType == "signIn") {
+                db.collection("dandelions").get().then((snapshot) => {
+                    snapshot.docs.forEach(doc => {
+                        console.log(doc.data().owner);
+                        console.log(val.user.uid);
+                        if (doc.data().owner == val.user.uid) {
+                            db.collection("dandelions").doc(doc.id).collection("seeds").get().then((snapshot) => {
+                                snapshot.docs.forEach(doc => {
+                                    activeMarkers.push(doc.data().active);
+                                })
+                            })
+                        }
+                    })
+                })
                 loadSettings();
             }
         })
@@ -25,7 +38,7 @@ loginButton.addEventListener("submit", function (_e) {
                     .then(function (user) {
 
 
-                        seedAmount = 5
+                        seedAmount = 2
                         console.log(`Creating ${seedAmount} seeds`);
                         console.log(seedAmount);
                         console.log(user);
@@ -37,9 +50,10 @@ loginButton.addEventListener("submit", function (_e) {
                         })
                             .then((docRef) => {
                                 for (let i = 0; i < seedAmount; i++) {
+                                    activeMarkers.push(true);
                                     db.collection("dandelions").doc(docRef.id).collection("seeds").add({
-                                        img: "",
-                                        //loc: new firebase.firestore.GeoPoint(45, 8)
+                                        img: "m" + i,
+                                        active: true
                                     })
                                 }
                             })
@@ -61,6 +75,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         warning.style.display = "none";
         currentUser.textContent = user.email;
         logoutButton.textContent = "Logout";
+
     } else {
         currentUser.textContent = "no user";
         console.log("Logged out");

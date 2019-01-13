@@ -194,9 +194,11 @@ function loadLoc() {
 }
 
 function unloadLoc() {
+    document.removeEventListener("click", shootPic);
     locWrapElement.style.display = "none";
     cameraButton.firstElementChild.style.opacity = "0.5";
     let videoEl = document.getElementsByTagName("video")[2];
+    console.log(videoEl);
     let canvasEl = document.getElementsByTagName("canvas");
     while (canvasEl[1] != null) {
         canvasEl[1].parentNode.removeChild(canvasEl[1]);
@@ -204,11 +206,11 @@ function unloadLoc() {
 
     if (videoEl != null) {
         let stream = videoEl.srcObject;
-        let tracks = stream.getTracks();
+        /* let tracks = stream.getTracks();
 
         tracks.forEach(function (track) {
             track.stop();
-        });
+        }); */
 
         videoEl.srcObject = null;
         videoEl.parentNode.removeChild(videoEl);
