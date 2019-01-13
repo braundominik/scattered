@@ -75,6 +75,12 @@ function init() {
         // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
     })
 
+    var artoolkitMarker2 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
+        type: 'pattern',
+        patternUrl: "./patt.hiro"
+        // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
+    })
+
     var smoothedRoot = new THREE.Group()
     scene.add(smoothedRoot)
     var smoothedControls = new THREEx.ArSmoothedControls(smoothedRoot, {
