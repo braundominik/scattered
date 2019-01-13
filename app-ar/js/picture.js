@@ -23,7 +23,8 @@ let cameraWrap = null;
 let allMediaStreams = [];
 
 function startup(_canvas, _video) {
-    canvas = _canvas;
+    //canvas = _canvas;
+    canvas = document.getElementById("takephoto-canvas");
     video = _video;
     document.addEventListener("click", shootPic);
     clearphoto();
@@ -57,6 +58,8 @@ function takepicture() {
         canvas.style.marginLeft = "0px";
         canvas.height = window.innerWidth; */
         //canvas.style.width = video.style.width;
+        canvas.width = window.innerWidth;
+        canvas.height = video.videoHeight;
         context.drawImage(video, 0, 0);
 
         var data = canvas.toDataURL('image/png');
