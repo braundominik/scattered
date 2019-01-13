@@ -11,7 +11,7 @@ function startAR(){
     renderer.domElement.style.top = '0px'
     renderer.domElement.style.left = '0px'
     document.body.appendChild(renderer.domElement);
-    renderer.domElement.addEventListener("click", shootPic);
+    //renderer.domElement.addEventListener("click", shootPic);
 
     var onRenderFcts = [];
 
@@ -57,6 +57,8 @@ function startAR(){
     })
 
     arToolkitContext.init(function onCompleted() {
+        console.log(arToolkitContext);
+        startup(arToolkitContext.arController.canvas);
         // copy projection matrix to camera
         camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
     })
@@ -96,6 +98,11 @@ function startAR(){
             var percentComplete = xhr.loaded / xhr.total * 100;
             console.log(Math.round(percentComplete, 2) + '% downloaded');
             loadText.textContent = Math.round(percentComplete, 2) + '% downloaded'
+
+            if(percentComplete == 100){
+                renderer.domElement.addEventListener("click", shootPic);
+                console.log("picture activated");
+            }
 
         }
 

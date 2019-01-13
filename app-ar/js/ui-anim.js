@@ -24,7 +24,6 @@ warning.style.visibility = "hidden";
 menuWrapperElement.style.visibility = "hidden";
 
 
-
 cameraButton.addEventListener("click", loadLoc);
 galleryButton.addEventListener("click", loadOverview);
 settingsButton.addEventListener("click", loadSettings);
@@ -60,7 +59,7 @@ function shootPic() {
     flashanim.onfinish = function () {
         flash.hidden = true;
     }
-    /* takepicture(); */
+    takepicture();
 }
 
 function loadCamera() {
@@ -192,15 +191,18 @@ function loadLoc() {
     locWrapElement.style.display = "block";
     cameraButton.firstElementChild.style.opacity = "1";
     startAR();
-
 }
 
 function unloadLoc() {
     locWrapElement.style.display = "none";
     cameraButton.firstElementChild.style.opacity = "0.5";
-    let videoEl = document.getElementsByTagName("video")[1];
-    let canvasEl = document.getElementsByTagName("canvas")[1];
-    if (canvasEl != null && videoEl != null) {
+    let videoEl = document.getElementsByTagName("video")[2];
+    let canvasEl = document.getElementsByTagName("canvas");
+    while (canvasEl[1] != null) {
+        canvasEl[1].parentNode.removeChild(canvasEl[1]);
+    }
+
+    if (videoEl != null) {
         let stream = videoEl.srcObject;
         let tracks = stream.getTracks();
 
@@ -210,6 +212,5 @@ function unloadLoc() {
 
         videoEl.srcObject = null;
         videoEl.parentNode.removeChild(videoEl);
-        canvasEl.parentNode.removeChild(canvasEl);
     }
 }
