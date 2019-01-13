@@ -52,7 +52,7 @@ loginButton.addEventListener("submit", function (_e) {
                                 for (let i = 0; i < seedAmount; i++) {
                                     activeMarkers.push(true);
                                     db.collection("dandelions").doc(docRef.id).collection("seeds").add({
-                                        img: "m" + i,
+                                        img: "marker/"+"m" + i + ".png",
                                         active: true
                                     })
                                 }

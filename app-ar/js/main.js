@@ -75,7 +75,7 @@ function startAR() {
     if (activeMarkers[0]) {
         var artoolkitMarker = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
             type: 'pattern',
-            patternUrl: "./patt.hiro"
+            patternUrl: "./marker/m1.patt"
             // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
     }
@@ -83,7 +83,7 @@ function startAR() {
     if (activeMarkers[1]) {
         var artoolkitMarker2 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
             type: 'pattern',
-            patternUrl: "./pattern-marker.patt"
+            patternUrl: "./marker/m0.patt"
             // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
     }
