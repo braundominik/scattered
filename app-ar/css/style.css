@@ -213,6 +213,7 @@ html{
 }
 
 #loading{
+    font-family:'raleway';
     font-weight: 600;
     color: #fff;
     margin-top: 200px;
