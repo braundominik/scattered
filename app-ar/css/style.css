@@ -148,14 +148,28 @@ html{
 
 /*------------------ Samen -------------------------*/
 
-.seed h1, .plant h1{
+.plant h1{
     color: #fff;
-    margin: 50px 0;
-    font-family:'hind';
+    margin: 160px 0 50px 0;
+    font-family:'raleway';
     line-height:1.3;
 }
 
-.seed .box, .plant .box{
+.plant_2 h1{
+    color: #fff;
+    margin: 90px 0 50px 0;
+    font-family:'raleway';
+    line-height:1.3;
+}
+
+.seed h1{
+    color: #fff;
+    margin: 120px 0 50px 0;
+    font-family:'raleway';
+    line-height:1.3;
+}
+
+.seed .box, .plant .box, .plant_2 .box{
     width: 80%;
     margin: auto;
     text-align: center;
@@ -163,6 +177,7 @@ html{
 
 .seed img{
     width: 80%;
+    margin-top: 40px;
 }
 
 .seed{
@@ -182,4 +197,21 @@ html{
     border-bottom: 1px solid #fff;
 }
 
+/*---------------- Button ----------------*/
 
+.button{
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 10px 4px 10px;
+    border: 2px solid #1a2233;
+    border-radius: 18px;
+    background: #1a2233;
+    height: 40px;
+    width: 150px;
+}
+
+.button:hover{
+    color: #1a2233;
+    background-color: #ffffff;
+}
