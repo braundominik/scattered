@@ -201,6 +201,24 @@ html{
     border-bottom: 1px solid #fff;
 }
 
+.ovlist{
+    font-family: 'raleway';
+    font-weight: 600;
+}
+
+/*---------------- AR ----------------*/
+
+.locwrapper{
+    text-align: center;
+}
+
+#loading{
+    font-weight: 600;
+    color: #fff;
+    margin-top: 200px;
+    font-size: 20px;
+}
+
 /*---------------- Button ----------------*/
 
 .button{
