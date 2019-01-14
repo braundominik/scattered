@@ -114,7 +114,6 @@ firebase.auth().onAuthStateChanged(function (user) {
 logoutButton.addEventListener("click", logout);
 
 function logout() {
-
     if (logoutButton.textContent == "Login") {
         unloadSettings();
         loadLogin();
