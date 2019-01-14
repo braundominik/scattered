@@ -157,7 +157,6 @@ function loadSettings() {
     
     /* Loading Settings */
     settingsWrapElement.style.display = "block";
-    menuWrapperElement.style.visibility = "visible";
     settingsButton.firstElementChild.style.opacity = "1";
 
 }
@@ -186,6 +185,7 @@ function loadLoc() {
     unloadCamera();
     unloadGallery();
 
+    menuWrapperElement.style.visibility = "visible";
     locWrapElement.style.display = "block";
     cameraButton.firstElementChild.style.opacity = "1";
     startAR();

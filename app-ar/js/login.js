@@ -26,7 +26,8 @@ loginButton.addEventListener("submit", function (_e) {
                         }
                     })
                 })
-                loadSettings();
+                //loadSettings();
+                loadLoc();
             }
         })
         .catch(function (error) {
