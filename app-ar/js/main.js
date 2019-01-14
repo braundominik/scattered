@@ -78,6 +78,10 @@ function startAR() {
             patternUrl: "./marker/m1.patt"
             // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
+        console.log(artoolkitMarker);
+        artoolkitMarker.addEventListener("markerFound", function(event){
+            console.log(event);
+        })
     }
 
     if (activeMarkers[1]) {

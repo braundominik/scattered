@@ -73,11 +73,11 @@ function takepicture() {
         // File or Blob named mountains.jpg
         var file = dataURItoBlob(data);
 
-        db.collection("dandelions").doc("RJUoABpN3Wxb6E0DGDx5").collection("seeds").get().then((snapshot) => {
+        db.collection("dandelions").doc("6ehVy8tvSOlKoRQZE6LB").collection("seeds").get().then((snapshot) => {
             let nameSet = false;
             snapshot.docs.forEach(doc => {
                 if (!nameSet) {
-                    if (doc.data().img == "") {
+                    if (doc.data().img == "marker/m0.png" || doc.data().img == "marker/m1.png") {
                         nameSet = true;
                         file.name = doc.id;
 
