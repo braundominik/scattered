@@ -70,7 +70,6 @@ loginButton.addEventListener("submit", function (_e) {
             seedElement.addEventListener("click", function removeSeed() {
                 seedElement.removeEventListener("click", removeSeed, true);
                 seedElement.style.display = "none";
-
                 animElement.style.display = "block";
                 dandelionAnim.play();
 
@@ -81,10 +80,17 @@ loginButton.addEventListener("submit", function (_e) {
                 dandelionAnim.addEventListener("complete", function () {
                     animElement.style.display = "none";
                     plantElement.style.display = "block";
-                    plantElement.addEventListener("click", function removePlant() {    
-                        plantElement.removeEventListener("click", removePlant, true);
+                    plantButton.addEventListener("click", function removePlant() {    
+                        plantButton.removeEventListener("click", removePlant, true);
                         plantElement.style.display = "none";
-                        loadSettings();
+                        plant2Element.style.display = "block";
+
+                        plant2Button.addEventListener("click", function removePlant2(){
+                            plant2Button.removeEventListener("click", removePlant, true);
+                            plant2Element.style.display = "none";
+                            loadLoc();
+                        })
+                        
                     }) 
                 })
 

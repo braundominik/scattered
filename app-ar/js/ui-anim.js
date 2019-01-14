@@ -24,6 +24,9 @@ warning.style.visibility = "hidden";
 menuWrapperElement.style.visibility = "hidden";
 let seedElement = document.querySelector(".seed");
 let plantElement = document.querySelector(".plant");
+let plant2Element = document.querySelector(".plant_2");
+let plantButton = document.getElementById("button_plant");
+let plant2Button = document.getElementById("button_plant_2");
 
 
 cameraButton.addEventListener("click", loadLoc);
