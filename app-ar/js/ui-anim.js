@@ -22,6 +22,8 @@ let flash = document.querySelector(".flash");
 flash.hidden = true;
 warning.style.visibility = "hidden";
 menuWrapperElement.style.visibility = "hidden";
+let seedElement = document.querySelector(".seed");
+let plantElement = document.querySelector(".plant");
 
 
 cameraButton.addEventListener("click", loadLoc);
@@ -146,21 +148,14 @@ function loadSettings() {
     unloadGallery();
 
 
-    animElement.style.display = "block";
-    dandelionAnim.play();
 
-    dandelionAnim.addEventListener("data_ready", function (data) {
-        console.log(data);
-    })
 
-    dandelionAnim.addEventListener("complete", function () {
-        animElement.style.display = "none";
-        /* Loading Settings */
-        settingsWrapElement.style.display = "block";
-        menuWrapperElement.style.visibility = "visible";
-        settingsButton.firstElementChild.style.opacity = "1";
-    })
 
+    
+    /* Loading Settings */
+    settingsWrapElement.style.display = "block";
+    menuWrapperElement.style.visibility = "visible";
+    settingsButton.firstElementChild.style.opacity = "1";
 
 }
 

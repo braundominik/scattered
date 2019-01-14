@@ -52,7 +52,7 @@ loginButton.addEventListener("submit", function (_e) {
                                 for (let i = 0; i < seedAmount; i++) {
                                     activeMarkers.push(true);
                                     db.collection("dandelions").doc(docRef.id).collection("seeds").add({
-                                        img: "marker/"+"m" + i + ".png",
+                                        img: "marker/" + "m" + i + ".png",
                                         active: true
                                     })
                                 }
@@ -65,6 +65,31 @@ loginButton.addEventListener("submit", function (_e) {
                         console.log(errorCode, errorMessage);
                     });
             }
+            unloadLogin();
+            seedElement.style.display = "block";
+            seedElement.addEventListener("click", function removeSeed() {
+                seedElement.removeEventListener("click", removeSeed, true);
+                seedElement.style.display = "none";
+
+                animElement.style.display = "block";
+                dandelionAnim.play();
+
+                /* dandelionAnim.addEventListener("data_ready", function (data) {
+                    console.log(data);
+                }) */
+
+                dandelionAnim.addEventListener("complete", function () {
+                    animElement.style.display = "none";
+                    plantElement.style.display = "block";
+                    plantElement.addEventListener("click", function removePlant() {    
+                        plantElement.removeEventListener("click", removePlant, true);
+                        plantElement.style.display = "none";
+                        loadSettings();
+                    }) 
+                })
+
+
+            });
         });
 
 })

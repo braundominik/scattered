@@ -163,6 +163,14 @@ html{
     width: 80%;
 }
 
+.seed{
+    display: none;
+}
+
+.plant{
+    display: none;
+}
+
 /*---------------- Overview List ----------------*/
 
 .h1-pusteblume{
