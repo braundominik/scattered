@@ -151,6 +151,8 @@ html{
 .seed h1, .plant h1{
     color: #fff;
     margin: 50px 0;
+    font-family:'hind';
+    line-height:1.3;
 }
 
 .seed .box, .plant .box{
@@ -174,8 +176,6 @@ html{
 /*---------------- Overview List ----------------*/
 
 .h1-pusteblume{
-    font-family:'hind';
-    line-height:1.3;
     color: #fff;
     padding: 22px 20px 7px 22px;
     font-size: 28px;
