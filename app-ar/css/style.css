@@ -145,3 +145,31 @@ html{
     display: none;
     z-index: 100;
 }
+
+/*------------------ Samen -------------------------*/
+
+.seed h1, .plant h1{
+    color: #fff;
+    margin: 50px 0;
+}
+
+.seed .box, .plant .box{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.seed img{
+    width: 80%;
+}
+
+/*---------------- Overview List ----------------*/
+
+.h1-pusteblume{
+    color: #fff;
+    padding: 22px 20px 7px 22px;
+    font-size: 28px;
+    border-bottom: 1px solid #fff;
+}
+
+
