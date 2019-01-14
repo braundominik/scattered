@@ -224,7 +224,7 @@ html{
 .pulse {
     font-size: 12px;
     font-weight: 600;
-    margin:100px;
+    margin:auto auto;
     display: block;
     height: 40px;
     width: 150px;
