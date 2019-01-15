@@ -34,7 +34,7 @@ function buildGallery(key) {
                 div.className = "gallery-item";
                 div.setAttribute("style", "--aspect-ratio: 1/1;");
                 if (doc.data().active) {
-                    div.style.backgroundImage = "url(" + doc.data().marker + ")";
+                    div.style.backgroundImage = "url(marker/" + doc.data().marker + ")";
                 }
                 if (!doc.data().active) {
                     div.style.backgroundImage = "url(" + doc.data().img + ")";

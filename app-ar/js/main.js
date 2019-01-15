@@ -76,16 +76,14 @@ function startAR() {
     if (activeMarkers[0]) {
         var artoolkitMarker = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
             type: 'pattern',
-            patternUrl: "marker/test2.patt",
+            patternUrl: "marker/m0.patt",
             // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
 
         artoolkitMarker.addEventListener("markerFound", function (event) {
             if (!shootAllowed) {
-                activateShootMode();
+                activateShootMode("marker1");
             }
-
-            console.log("Hallo");
             /* console.log(arToolkitContext);
             console.log(artoolkitMarker.parameters.patternUrl);
             artoolkitMarker.parameters.patternUrl = "";
@@ -100,13 +98,13 @@ function startAR() {
     if (activeMarkers[1]) {
         var artoolkitMarker2 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
             type: 'pattern',
-            patternUrl: "marker/test.patt"
+            patternUrl: "marker/m1.patt"
             // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
 
         artoolkitMarker2.addEventListener("markerFound", function (event) {
             if (!shootAllowed) {
-                activateShootMode();
+                activateShootMode("marker2");
             }
             /* console.log(arToolkitContext);
             console.log(artoolkitMarker.parameters.patternUrl);

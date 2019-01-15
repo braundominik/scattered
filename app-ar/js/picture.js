@@ -42,16 +42,19 @@ function clearphoto() {
     //photo.setAttribute('src', data);
 }
 
+let currentMarker = null;
 let shootAllowed = false;
-function activateShootMode() {
+function activateShootMode(marker) {
     if (!shootAllowed) {
         document.addEventListener("click", shootPic);
         shootAllowed = true;
-        setTimeout(timeShoot,5000);
+        currentMarker = marker;
+        console.log(marker);
+        setTimeout(timeShoot, 5000);
     }
 }
 
-function timeShoot(){
+function timeShoot() {
     console.log("Hallo");
     document.removeEventListener("click", shootPic);
     shootAllowed = false;
@@ -95,7 +98,7 @@ function takepicture() {
                         if (!nameSet) {
                             if (doc.data().img == "") {
                                 nameSet = true;
-                                file.name = doc.id;
+                                file.name = doc.id + currentMarker;
 
                                 // Create the file metadata
                                 var metadata = {
@@ -142,7 +145,22 @@ function takepicture() {
                                         // Upload completed successfully, now we can get the download URL
                                         uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
 
-                                            db.collection("dandelions").doc("HXF6wJlDG5rZwK2TZtzf").collection("seeds").get().then((snapshot) => {
+                                            db.collection("dandelions").where("owner", "==", firebase.auth().currentUser.uid).get().then((snapshot) => {
+                                                snapshot.docs.forEach(doc => {
+                                                    let saveDoc = doc.id;
+                                                    db.collection("dandelions").doc(doc.id).collection("seeds").where("marker", "==", currentMarker + ".png").get().then((snapshot) => {
+                                                        snapshot.docs.forEach(doc => {
+                                                            db.collection("dandelions").doc(saveDoc).collection("seeds").doc(doc.id).update({
+                                                                img: downloadURL,
+                                                                active: false
+                                                            })
+                                                        })
+                                                    })
+                                                })
+                                            })
+
+
+                                            /* db.collection("dandelions").doc("HXF6wJlDG5rZwK2TZtzf").collection("seeds").get().then((snapshot) => {
                                                 let refSaved = false;
                                                 snapshot.docs.forEach(doc => {
                                                     if (!refSaved) {
@@ -155,7 +173,7 @@ function takepicture() {
                                                         }
                                                     }
                                                 })
-                                            })
+                                            }) */
 
                                             console.log('File available at', downloadURL);
                                         });

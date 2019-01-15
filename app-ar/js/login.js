@@ -55,7 +55,7 @@ loginButton.addEventListener("submit", function (_e) {
                                     db.collection("dandelions").doc(docRef.id).collection("seeds").add({
                                         img: "",
                                         active: true,
-                                        marker: "marker/" + "m" + i + ".png"
+                                        marker: "marker" + (i+1) + ".png"
                                     })
                                 }
                             })
