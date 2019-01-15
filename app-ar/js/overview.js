@@ -45,6 +45,16 @@ function buildOverview() {
                 div.textContent = "Flower " + x;
                 div.addEventListener("click", e => buildGallery(doc.id))
                 overview.appendChild(div);
+
+                db.collection("dandelions").doc(doc.id).collection("seeds").
+                    onSnapshot((snapshot) => {
+                        activeMarkers = [];
+                        console.log(activeMarkers);
+                        snapshot.docs.forEach(doc => {                           
+                            activeMarkers.push(doc.data().active);
+                            console.log(activeMarkers);
+                       })
+                    })
             });
         })
 

@@ -26,7 +26,6 @@ function startup(_canvas, _video) {
     //canvas = _canvas;
     canvas = document.getElementById("takephoto-canvas");
     video = _video;
-    document.addEventListener("click", shootPic);
     clearphoto();
 }
 
@@ -41,6 +40,21 @@ function clearphoto() {
 
     var data = canvas.toDataURL('image/png');
     //photo.setAttribute('src', data);
+}
+
+let shootAllowed = false;
+function activateShootMode() {
+    if (!shootAllowed) {
+        document.addEventListener("click", shootPic);
+        shootAllowed = true;
+        setTimeout(timeShoot,5000);
+    }
+}
+
+function timeShoot(){
+    console.log("Hallo");
+    document.removeEventListener("click", shootPic);
+    shootAllowed = false;
 }
 
 // Capture a photo by fetching the current contents of the video
@@ -73,79 +87,84 @@ function takepicture() {
         // File or Blob named mountains.jpg
         var file = dataURItoBlob(data);
 
-        db.collection("dandelions").doc("sNyfgo8MMQo0H7Fp9KGY").collection("seeds").get().then((snapshot) => {
+        db.collection("dandelions").where("owner", "==", firebase.auth().currentUser.uid).get().then((snapshot) => {
             let nameSet = false;
             snapshot.docs.forEach(doc => {
-                if (!nameSet) {
-                    if (doc.data().img == "marker/m0.png" || doc.data().img == "marker/m1.png") {
-                        nameSet = true;
-                        file.name = doc.id;
+                db.collection("dandelions").doc(doc.id).collection("seeds").get().then((snapshot) => {
+                    snapshot.docs.forEach(doc => {
+                        if (!nameSet) {
+                            if (doc.data().img == "") {
+                                nameSet = true;
+                                file.name = doc.id;
 
-                        // Create the file metadata
-                        var metadata = {
-                            contentType: 'image/jpeg'
-                        };
-
-
-                        // Upload file and metadata to the object 'images/mountains.jpg'
-                        var uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
+                                // Create the file metadata
+                                var metadata = {
+                                    contentType: 'image/jpeg'
+                                };
 
 
-                        // Listen for state changes, errors, and completion of the upload.
-                        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
-                            function (snapshot) {
-                                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-                                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                                console.log('Upload is ' + progress + '% done');
-                                switch (snapshot.state) {
-                                    case firebase.storage.TaskState.PAUSED: // or 'paused'
-                                        console.log('Upload is paused');
-                                        break;
-                                    case firebase.storage.TaskState.RUNNING: // or 'running'
-                                        console.log('Upload is running');
-                                        break;
-                                }
-                            }, function (error) {
+                                // Upload file and metadata to the object 'images/mountains.jpg'
+                                var uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
 
-                                // A full list of error codes is available at
-                                // https://firebase.google.com/docs/storage/web/handle-errors
-                                switch (error.code) {
-                                    case 'storage/unauthorized':
-                                        // User doesn't have permission to access the object
-                                        break;
 
-                                    case 'storage/canceled':
-                                        // User canceled the upload
-                                        break;
+                                // Listen for state changes, errors, and completion of the upload.
+                                uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+                                    function (snapshot) {
+                                        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                                        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                                        console.log('Upload is ' + progress + '% done');
+                                        switch (snapshot.state) {
+                                            case firebase.storage.TaskState.PAUSED: // or 'paused'
+                                                console.log('Upload is paused');
+                                                break;
+                                            case firebase.storage.TaskState.RUNNING: // or 'running'
+                                                console.log('Upload is running');
+                                                break;
+                                        }
+                                    }, function (error) {
 
-                                    case 'storage/unknown':
-                                        // Unknown error occurred, inspect error.serverResponse
-                                        break;
-                                }
-                            }, function () {
-                                // Upload completed successfully, now we can get the download URL
-                                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                                        // A full list of error codes is available at
+                                        // https://firebase.google.com/docs/storage/web/handle-errors
+                                        switch (error.code) {
+                                            case 'storage/unauthorized':
+                                                // User doesn't have permission to access the object
+                                                break;
 
-                                    db.collection("dandelions").doc("OTZmsX1i98PH6bHlHG3x").collection("seeds").get().then((snapshot) => {
-                                        let refSaved = false;
-                                        snapshot.docs.forEach(doc => {
-                                            if (!refSaved) {
-                                                if (doc.data().img == "") {
-                                                    refSaved = true;
-                                                    db.collection("dandelions").doc("OTZmsX1i98PH6bHlHG3x").collection("seeds").doc(doc.id).update({
-                                                        img: downloadURL
-                                                    })
-                                                }
-                                            }
-                                        })
-                                    })
+                                            case 'storage/canceled':
+                                                // User canceled the upload
+                                                break;
 
-                                    console.log('File available at', downloadURL);
-                                });
-                            });
+                                            case 'storage/unknown':
+                                                // Unknown error occurred, inspect error.serverResponse
+                                                break;
+                                        }
+                                    }, function () {
+                                        // Upload completed successfully, now we can get the download URL
+                                        uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
 
-                    }
-                }
+                                            db.collection("dandelions").doc("HXF6wJlDG5rZwK2TZtzf").collection("seeds").get().then((snapshot) => {
+                                                let refSaved = false;
+                                                snapshot.docs.forEach(doc => {
+                                                    if (!refSaved) {
+                                                        if (doc.data().img == "") {
+                                                            refSaved = true;
+                                                            db.collection("dandelions").doc("HXF6wJlDG5rZwK2TZtzf").collection("seeds").doc(doc.id).update({
+                                                                img: downloadURL,
+                                                                active: false
+                                                            })
+                                                        }
+                                                    }
+                                                })
+                                            })
+
+                                            console.log('File available at', downloadURL);
+                                        });
+                                    });
+
+                            }
+                        }
+                    })
+                })
             })
         })
 

@@ -154,7 +154,7 @@ function loadSettings() {
 
 
 
-    
+
     /* Loading Settings */
     settingsWrapElement.style.display = "block";
     settingsButton.firstElementChild.style.opacity = "1";
@@ -179,38 +179,43 @@ function loadLogin() {
 }
 
 function loadLoc() {
-    unloadSettings();
-    unloadOverview();
-    unloadLogin();
-    unloadCamera();
-    unloadGallery();
 
-    menuWrapperElement.style.visibility = "visible";
-    locWrapElement.style.display = "block";
-    cameraButton.firstElementChild.style.opacity = "1";
-    startAR();
+    if (document.getElementsByTagName("video")[2] == null) {
+
+        unloadSettings();
+        unloadOverview();
+        unloadLogin();
+        unloadCamera();
+        unloadGallery();
+
+        menuWrapperElement.style.visibility = "visible";
+        locWrapElement.style.display = "block";
+        cameraButton.firstElementChild.style.opacity = "1";
+        startAR();
+
+    }
 }
 
 function unloadLoc() {
     document.removeEventListener("click", shootPic);
     locWrapElement.style.display = "none";
     cameraButton.firstElementChild.style.opacity = "0.5";
-    let videoEl = document.getElementsByTagName("video")[2];
+    let videoEl = document.getElementsByTagName("video");
     console.log(videoEl);
     let canvasEl = document.getElementsByTagName("canvas");
     while (canvasEl[1] != null) {
         canvasEl[1].parentNode.removeChild(canvasEl[1]);
     }
 
-    if (videoEl != null) {
-        let stream = videoEl.srcObject;
+    while (videoEl[2] != null) {
+        let stream = videoEl[2].srcObject;
         /* let tracks = stream.getTracks();
 
         tracks.forEach(function (track) {
             track.stop();
         }); */
 
-        videoEl.srcObject = null;
-        videoEl.parentNode.removeChild(videoEl);
+        videoEl[2].srcObject = null;
+        videoEl[2].parentNode.removeChild(videoEl[2]);
     }
 }

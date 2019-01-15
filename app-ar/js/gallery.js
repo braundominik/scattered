@@ -13,7 +13,7 @@ function showGallery() {
     gallery.style.display = "grid";
 }
 
-function unloadGallery(){
+function unloadGallery() {
     gallery.style.display = "none";
 }
 
@@ -27,15 +27,20 @@ function buildGallery(key) {
         let totalItems = snapshot.size;
         console.log(totalItems);
         snapshot.docs.forEach(doc => {
-            if (doc.data().img != "") {
+            /* if (doc.data().img == "") { */
                 totalItems--;
                 console.log(doc.data().img);
                 let div = document.createElement("div");
                 div.className = "gallery-item";
                 div.setAttribute("style", "--aspect-ratio: 1/1;");
-                div.style.backgroundImage = "url(" + doc.data().img + ")";
+                if (doc.data().active) {
+                    div.style.backgroundImage = "url(" + doc.data().marker + ")";
+                }
+                if (!doc.data().active) {
+                    div.style.backgroundImage = "url(" + doc.data().img + ")";
+                }
                 gallery.appendChild(div);
-            }
+            /* } */
         })
 
         for (let i = 0; i < totalItems; i++) {

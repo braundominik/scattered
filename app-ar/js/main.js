@@ -72,15 +72,26 @@ function startAR() {
     var markerRoot = new THREE.Group
     scene.add(markerRoot)
 
+
     if (activeMarkers[0]) {
         var artoolkitMarker = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
             type: 'pattern',
-            patternUrl: "./marker/m1.patt"
+            patternUrl: "./marker/m1.patt",
             // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
-        console.log(artoolkitMarker);
-        artoolkitMarker.addEventListener("markerFound", function(event){
+
+        artoolkitMarker.addEventListener("markerFound", function (event) {
+            if (!shootAllowed) {
+                activateShootMode();
+            }
+            /* console.log(arToolkitContext);
+            console.log(artoolkitMarker.parameters.patternUrl);
+            artoolkitMarker.parameters.patternUrl = "";
             console.log(event);
+            console.log(scene);
+            scene.remove(scene.getObjectById(8));
+            console.log(scene.getObjectById(8));
+            arToolkitMarker.update(); */
         })
     }
 
