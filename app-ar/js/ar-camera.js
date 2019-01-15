@@ -69,42 +69,39 @@ function startAR() {
         arToolkitContext.update(arToolkitSource.domElement)
     })
 
-    var markerRoot1 = new THREE.Group
-    scene.add(markerRoot1)
-
+    var markerRoot = new THREE.Group;
+    scene.add(markerRoot)
 
     if (activeMarkers[0]) {
-        var artoolkitMarker = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
-            type: 'pattern',
+        var markerControls = new THREEx.ARMarkerControls(arToolkitContext, markerRoot, {
+            type: "pattern",
             patternUrl: "marker/m0.patt",
-            // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
 
-        artoolkitMarker.addEventListener("markerFound", function (event) {
-            if (!shootAllowed) {
-                activateShootMode("marker1");
-            }
-        })
+        /*         markerRoot1.addEventListener("markerFound", function (event) {
+                    if (!shootAllowed) {
+                        activateShootMode("marker1");
+                    }
+                }) */
     }
 
+    /*    if (activeMarkers[1]) {
+   
+           var markerRoot2 = new THREE.Group;
+           markerRoot2.name = "marker1"
+           scene.add(markerRoot1)
+           var markerControls = new THREEx.ARMarkerControls(arToolkitContext, markerRoot2, {
+               type: "pattern",
+               patternUrl: "marker/m1.patt",
+           }) */
 
 
-    var markerRoot2 = new THREE.Group
-    scene.add(markerRoot2)
+    /*         markerRoot2.addEventListener("markerFound", function (event) {
+                if (!shootAllowed) {
+                    activateShootMode("marker2");
+                }
+            }) */
 
-    if (activeMarkers[1]) {
-        var artoolkitMarker2 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot2, {
-            type: 'pattern',
-            patternUrl: "marker/m1.patt"
-            // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
-        })
-
-        artoolkitMarker2.addEventListener("markerFound", function (event) {
-            if (!shootAllowed) {
-                activateShootMode("marker2");
-            }
-        })
-    }
 
 
     var smoothedRoot = new THREE.Group()
@@ -115,11 +112,12 @@ function startAR() {
         lerpScale: 1,
     })
     onRenderFcts.push(function (delta) {
-        smoothedControls.update(markerRoot1)
+        smoothedControls.update(markerRoot)
     })
 
     var arWorldRoot = smoothedRoot
     // add a torus knot	
+
 
     var onProgress = function (xhr) {
 
@@ -151,41 +149,20 @@ function startAR() {
 
             materials.preload();
 
-            if (activeMarkers[0]) {
-                new THREE.OBJLoader()
-                    .setMaterials(materials)
-                    .setPath('models/')
-                    .load('dand_model.obj', function (object) {
+            new THREE.OBJLoader()
+                .setMaterials(materials)
+                .setPath('models/')
+                .load('dand_model.obj', function (object) {
 
-                        object.position.y = 0;
-                        object.scale.z = 0.5;
-                        object.scale.x = 0.5;
-                        object.scale.y = 0.5;
-                        object.rotation.x = -1.5;
-                        markerRoot1.add(new THREE.HemisphereLight());
-                        markerRoot1.add(object);
+                    object.position.y = 0;
+                    object.scale.z = 0.5;
+                    object.scale.x = 0.5;
+                    object.scale.y = 0.5;
+                    object.rotation.x = -1.5;
+                    arWorldRoot.add(new THREE.HemisphereLight());
+                    arWorldRoot.add(object);
 
-
-                    }, onProgress, onError);
-            }
-
-
-            if (activeMarkers[1]) {
-                new THREE.OBJLoader()
-                    .setMaterials(materials)
-                    .setPath('models/')
-                    .load('dand_model.obj', function (object) {
-
-                        object.position.y = 0;
-                        object.scale.z = 0.5;
-                        object.scale.x = 0.5;
-                        object.scale.y = 0.5;
-                        object.rotation.x = -1.5;
-                        markerRoot2.add(new THREE.HemisphereLight());
-                        markerRoot2.add(object);
-
-                    }, onProgress, onError);
-            }
+                }, onProgress, onError);
 
         });
 
