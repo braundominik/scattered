@@ -98,6 +98,7 @@ input {
 /*------------------- Settings ------------------*/
 
 .settingsWrapper .user{
+    font-family:'raleway';
     padding-top: 160px;
     color: #fff;
     font-family: 'arial';
