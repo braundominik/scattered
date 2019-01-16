@@ -50,10 +50,15 @@ function buildOverview() {
                     onSnapshot((snapshot) => {
                         activeMarkers = [];
                         console.log(activeMarkers);
-                        snapshot.docs.forEach(doc => {                           
-                            activeMarkers.push(doc.data().active);
+                        snapshot.docs.forEach(doc => {
+                            if (doc.data().marker == "marker1.png") {
+                                activeMarkers[0] = doc.data().active;
+                            }
+                            else {
+                                activeMarkers[1] = doc.data().active;
+                            }
                             console.log(activeMarkers);
-                       })
+                        })
                     })
             });
         })

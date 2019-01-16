@@ -20,7 +20,12 @@ loginButton.addEventListener("submit", function (_e) {
                         if (doc.data().owner == val.user.uid) {
                             db.collection("dandelions").doc(doc.id).collection("seeds").get().then((snapshot) => {
                                 snapshot.docs.forEach(doc => {
-                                    activeMarkers.push(doc.data().active);
+                                    if(doc.data().marker == "marker1.png"){
+                                        activeMarkers[0] = doc.data().active;
+                                    }
+                                    else{
+                                        activeMarkers[1] = doc.data().active;
+                                    }
                                 })
                             })
                         }

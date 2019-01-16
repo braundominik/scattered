@@ -69,6 +69,8 @@ function startAR() {
         arToolkitContext.update(arToolkitSource.domElement)
     })
 
+
+
     var markerRoot1 = new THREE.Group
     scene.add(markerRoot1)
 
@@ -105,6 +107,12 @@ function startAR() {
             }
         })
     }
+
+    console.log(markerRoot1);
+    console.log(markerRoot2);
+
+    /* scene.remove(markerRoot1) */
+
 
 
     var smoothedRoot = new THREE.Group()
@@ -169,13 +177,12 @@ function startAR() {
                     }, onProgress, onError);
             }
 
-
             if (activeMarkers[1]) {
                 new THREE.OBJLoader()
                     .setMaterials(materials)
                     .setPath('models/')
                     .load('dand_model.obj', function (object) {
-
+                        object.name = "TESTOBJEKT";
                         object.position.y = 0;
                         object.scale.z = 0.5;
                         object.scale.x = 0.5;
@@ -186,6 +193,8 @@ function startAR() {
 
                     }, onProgress, onError);
             }
+
+            console.log(scene);
 
         });
 
