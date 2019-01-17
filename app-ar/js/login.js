@@ -20,10 +20,10 @@ loginButton.addEventListener("submit", function (_e) {
                         if (doc.data().owner == val.user.uid) {
                             db.collection("dandelions").doc(doc.id).collection("seeds").get().then((snapshot) => {
                                 snapshot.docs.forEach(doc => {
-                                    if(doc.data().marker == "marker1.png"){
+                                    if (doc.data().marker == "marker1.png") {
                                         activeMarkers[0] = doc.data().active;
                                     }
-                                    else{
+                                    else {
                                         activeMarkers[1] = doc.data().active;
                                     }
                                 })
@@ -60,7 +60,7 @@ loginButton.addEventListener("submit", function (_e) {
                                     db.collection("dandelions").doc(docRef.id).collection("seeds").add({
                                         img: "",
                                         active: true,
-                                        marker: "marker" + (i+1) + ".png"
+                                        marker: "marker" + (i + 1) + ".png"
                                     })
                                 }
                             })
@@ -71,38 +71,43 @@ loginButton.addEventListener("submit", function (_e) {
                         var errorMessage = error.message;
                         console.log(errorCode, errorMessage);
                     });
-            }
-            unloadLogin();
-            seedElement.style.display = "block";
-            seedElement.addEventListener("click", function removeSeed() {
-                seedElement.removeEventListener("click", removeSeed, true);
-                seedElement.style.display = "none";
-                animElement.style.display = "block";
-                dandelionAnim.play();
 
-                /* dandelionAnim.addEventListener("data_ready", function (data) {
-                    console.log(data);
-                }) */
 
-                dandelionAnim.addEventListener("complete", function () {
-                    animElement.style.display = "none";
-                    plantElement.style.display = "block";
-                    plantButton.addEventListener("click", function removePlant() {    
-                        plantButton.removeEventListener("click", removePlant, true);
-                        plantElement.style.display = "none";
-                        plant2Element.style.display = "block";
+                unloadLogin();
+                seedElement.style.display = "block";
+                seedElement.addEventListener("click", function removeSeed() {
+                    seedElement.removeEventListener("click", removeSeed, true);
+                    seedElement.style.display = "none";
+                    animElement.style.display = "block";
+                    dandelionAnim.play();
 
-                        plant2Button.addEventListener("click", function removePlant2(){
-                            plant2Button.removeEventListener("click", removePlant, true);
-                            plant2Element.style.display = "none";
-                            loadLoc();
+                    /* dandelionAnim.addEventListener("data_ready", function (data) {
+                        console.log(data);
+                    }) */
+
+                    dandelionAnim.addEventListener("complete", function () {
+                        animElement.style.display = "none";
+                        plantElement.style.display = "block";
+                        plantButton.addEventListener("click", function removePlant() {
+                            plantButton.removeEventListener("click", removePlant, true);
+                            plantElement.style.display = "none";
+                            plant2Element.style.display = "block";
+
+                            plant2Button.addEventListener("click", function removePlant2() {
+                                plant2Button.removeEventListener("click", removePlant, true);
+                                plant2Element.style.display = "none";
+                                loadLoc();
+                            })
+
                         })
-                        
-                    }) 
-                })
+                    })
 
 
-            });
+                });
+
+
+            }
+
         });
 
 })

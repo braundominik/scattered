@@ -109,7 +109,7 @@ function startAR() {
     }
 
     console.log(markerRoot1);
-    console.log(markerRoot2);
+    //console.log(markerRoot2);
 
     /* scene.remove(markerRoot1) */
 
@@ -122,11 +122,22 @@ function startAR() {
         lerpQuaternion: 0.3,
         lerpScale: 1,
     })
+
+    var smoothedRoot2 = new THREE.Group()
+    scene.add(smoothedRoot2)
+    var smoothedControls2 = new THREEx.ArSmoothedControls(smoothedRoot2, {
+        lerpPosition: 0.4,
+        lerpQuaternion: 0.3,
+        lerpScale: 1,
+    })
+
     onRenderFcts.push(function (delta) {
         smoothedControls.update(markerRoot1)
+        smoothedControls2.update(markerRoot2)
     })
 
     var arWorldRoot = smoothedRoot
+    var arWorldRoot2 = smoothedRoot2
     // add a torus knot	
 
     var onProgress = function (xhr) {
@@ -155,7 +166,7 @@ function startAR() {
 
     new THREE.MTLLoader()
         .setPath('models/')
-        .load('dand_material.mtl', function (materials) {
+        .load('dandelion2.mtl', function (materials) {
 
             materials.preload();
 
@@ -163,17 +174,15 @@ function startAR() {
                 new THREE.OBJLoader()
                     .setMaterials(materials)
                     .setPath('models/')
-                    .load('dand_model.obj', function (object) {
+                    .load('dandelion2.obj', function (object) {
 
                         object.position.y = 0;
                         object.scale.z = 0.5;
                         object.scale.x = 0.5;
                         object.scale.y = 0.5;
                         object.rotation.x = -1.5;
-                        markerRoot1.add(new THREE.HemisphereLight());
-                        markerRoot1.add(object);
-
-
+                        arWorldRoot.add(new THREE.HemisphereLight());
+                        arWorldRoot.add(object);
                     }, onProgress, onError);
             }
 
@@ -181,15 +190,15 @@ function startAR() {
                 new THREE.OBJLoader()
                     .setMaterials(materials)
                     .setPath('models/')
-                    .load('dand_model.obj', function (object) {
+                    .load('dandelion2.obj', function (object) {
                         object.name = "TESTOBJEKT";
                         object.position.y = 0;
                         object.scale.z = 0.5;
                         object.scale.x = 0.5;
                         object.scale.y = 0.5;
                         object.rotation.x = -1.5;
-                        markerRoot2.add(new THREE.HemisphereLight());
-                        markerRoot2.add(object);
+                        arWorldRoot2.add(new THREE.HemisphereLight());
+                        arWorldRoot2.add(object);
 
                     }, onProgress, onError);
             }
