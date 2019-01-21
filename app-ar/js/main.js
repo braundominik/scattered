@@ -174,7 +174,7 @@ function startAR() {
                 new THREE.OBJLoader()
                     .setMaterials(materials)
                     .setPath('models/')
-                    .load('dandelion2.obj', function (object) {
+                    .load('lpd.obj', function (object) {
 
                         object.position.y = 0;
                         object.scale.z = 0.5;
@@ -190,7 +190,7 @@ function startAR() {
                 new THREE.OBJLoader()
                     .setMaterials(materials)
                     .setPath('models/')
-                    .load('dandelion2.obj', function (object) {
+                    .load('lpd.obj', function (object) {
                         object.name = "TESTOBJEKT";
                         object.position.y = 0;
                         object.scale.z = 0.5;
