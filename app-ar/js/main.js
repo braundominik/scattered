@@ -78,7 +78,7 @@ function startAR() {
     if (activeMarkers[0]) {
         var artoolkitMarker = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
             type: 'pattern',
-            patternUrl: "marker/m0.patt",
+            patternUrl: "marker/marker1.patt",
             // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
 
@@ -97,7 +97,7 @@ function startAR() {
     if (activeMarkers[1]) {
         var artoolkitMarker2 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot2, {
             type: 'pattern',
-            patternUrl: "marker/m1.patt"
+            patternUrl: "marker/marker2.patt"
             // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
 
@@ -174,7 +174,7 @@ function startAR() {
                 new THREE.OBJLoader()
                     .setMaterials(materials)
                     .setPath('models/')
-                    .load('lpd.obj', function (object) {
+                    .load('dand_model.obj', function (object) {
 
                         object.position.y = 0;
                         object.scale.z = 0.5;
@@ -190,7 +190,7 @@ function startAR() {
                 new THREE.OBJLoader()
                     .setMaterials(materials)
                     .setPath('models/')
-                    .load('lpd.obj', function (object) {
+                    .load('dand_model.obj', function (object) {
                         object.name = "TESTOBJEKT";
                         object.position.y = 0;
                         object.scale.z = 0.5;
