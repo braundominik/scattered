@@ -166,7 +166,7 @@ function startAR() {
 
     new THREE.MTLLoader()
         .setPath('models/')
-        .load('dandelion2.mtl', function (materials) {
+        .load('dand_model2.obj', function (materials) {
 
             materials.preload();
 
