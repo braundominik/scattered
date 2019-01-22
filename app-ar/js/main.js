@@ -78,7 +78,7 @@ function startAR() {
     if (activeMarkers[0]) {
         var artoolkitMarker = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
             type: 'pattern',
-            patternUrl: "marker/m0.patt",
+            patternUrl: "marker/test1.patt",
             // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
 
@@ -97,7 +97,7 @@ function startAR() {
     if (activeMarkers[1]) {
         var artoolkitMarker2 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot2, {
             type: 'pattern',
-            patternUrl: "marker/m1.patt"
+            patternUrl: "marker/test1.patt"
             // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
 
@@ -166,7 +166,7 @@ function startAR() {
 
     new THREE.MTLLoader()
         .setPath('models/')
-        .load('dand_model2.obj', function (materials) {
+        .load('dand_material.mtl', function (materials) {
 
             materials.preload();
 
